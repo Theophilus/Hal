@@ -1,9 +1,10 @@
 package SE_spring2013_g8.hal.Main;
 
-import SE_spring2013_g8.hal.*;
+import SE_spring2013_g8.hal.R;
 import SE_spring2013_g8.hal.Intercom.HomeView;
 import SE_spring2013_g8.hal.Lights.LightControl;
 import SE_spring2013_g8.hal.Surveillance.SurveillanceMainActivity;
+import SE_spring2013_g8.hal.emerlight.EmergencyLighting;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -36,6 +37,10 @@ public class MainActivity extends Activity {
 	            }
 	            if (position == 6) {
 	            	Intent intent = new Intent(MainActivity.this, SurveillanceMainActivity.class);
+	            	startActivity(intent);
+	            }
+	            if (position == 4) {
+	            	Intent intent = new Intent(MainActivity.this, EmergencyLighting.class);
 	            	startActivity(intent);
 	            }
 	        }

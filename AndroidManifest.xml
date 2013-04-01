@@ -10,13 +10,18 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.front" />
+
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-	<uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.RECORD_VIDEO" />
-    
+        
+    <!--' Emergency Lighting - Set Write Permissions for Device Settings'-->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/app_icon"
@@ -31,86 +36,70 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
         <activity
             android:name=".Intercom.HomeView"
             android:label="Intercom Home"
             android:parentActivityName="SE_spring2013_g8.hal.Main.MainActivity" >
-            
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="SE_spring2013_g8.hal.Main.MainActivity" />
-         </activity>
-         
-         <activity
+        </activity>
+        <activity
             android:name=".Intercom.BroadcastView"
             android:label="Broadcast"
             android:parentActivityName="SE_spring2013_g8.hal.Intercom.HomeView" >
-            
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="SE_spring2013_g8.hal.Intercom.HomeView" />
-         </activity>
-         
-         <activity
+        </activity>
+        <activity
             android:name=".Intercom.P2PView"
             android:label="P2P Call"
             android:parentActivityName="SE_spring2013_g8.hal.Intercom.HomeView" >
-            
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="SE_spring2013_g8.hal.Intercom.HomeView" />
-         </activity>
-         
-         <activity
+        </activity>
+        <activity
             android:name=".Intercom.ConferenceView"
             android:label="Conference Call"
             android:parentActivityName="SE_spring2013_g8.hal.Intercom.HomeView" >
-            
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="SE_spring2013_g8.hal.Intercom.HomeView" />
-         </activity>
-         
-         <activity
+        </activity>
+        <activity
             android:name=".Intercom.AnnouncementView"
             android:label="Announcement"
             android:parentActivityName="SE_spring2013_g8.hal.Intercom.HomeView" >
-            
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="SE_spring2013_g8.hal.Intercom.HomeView" />
-         </activity>
-         
-         <activity
+        </activity>
+        <activity
             android:name=".Intercom.DailView"
             android:label="Dailing..."
             android:parentActivityName="SE_spring2013_g8.hal.Intercom.HomeView" >
-            
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="SE_spring2013_g8.hal.Intercom.HomeView" />
-         </activity>
-         
-         <activity
+        </activity>
+        <activity
             android:name=".Intercom.InCallView"
             android:label="Incoming Call..."
             android:parentActivityName="SE_spring2013_g8.hal.Intercom.HomeView" >
-            
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="SE_spring2013_g8.hal.Intercom.HomeView" />
-         </activity>
-         
-         <activity
+        </activity>
+        <activity
             android:name=".Intercom.ConnCallView"
             android:label="Call Connected"
             android:parentActivityName="SE_spring2013_g8.hal.Intercom.HomeView" >
-            
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="SE_spring2013_g8.hal.Intercom.HomeView" />
-         </activity>
+        </activity>
         <activity
             android:name=".Lights.LightControl"
             android:label="@string/title_activity_light_control"
@@ -119,34 +108,42 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="SE_spring2013_g8.hal.Main.MainActivity" />
         </activity>
-
         <activity
             android:name=".Surveillance.SurveillanceMainActivity"
             android:label="Surveillance - Home Screen" >
             <intent-filter>
                 <action android:name=".Surveillance.SurveillanceMainActivity" />
+
                 <category android:name="android.intent.category.Defailt" />
             </intent-filter>
         </activity>
-        
         <activity
             android:name=".Surveillance.ClientActivity"
             android:label="Surveillance - Video Source Screen" >
             <intent-filter>
                 <action android:name=".Surveillance.ClientActivity" />
+
                 <category android:name="android.intent.category.Default" />
             </intent-filter>
         </activity>
-        
-		<activity
+        <activity
             android:name=".Surveillance.ServerActivity"
             android:label="Surveillance - Video View Screen" >
             <intent-filter>
                 <action android:name=".Surveillance.ServerActivity" />
+
                 <category android:name="android.intent.category.Default" />
             </intent-filter>
         </activity>
-        
+        <activity
+            android:name=".emerlight.EmergencyLighting"
+            android:label="@string/title_activity_emergency_lighting" >
+            <intent-filter>
+                <action android:name=".emerlight.EmergencyLighting" />
+
+                <category android:name="android.intent.category.Default" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
