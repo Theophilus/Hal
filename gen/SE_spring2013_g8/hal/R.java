@@ -8,6 +8,9 @@
 package SE_spring2013_g8.hal;
 
 public final class R {
+    public static final class array {
+        public static final int Lights_list=0x7f070000;
+    }
     public static final class attr {
     }
     public static final class dimen {
@@ -37,36 +40,42 @@ public final class R {
         public static final int surveillanceicon=0x7f02000d;
     }
     public static final class id {
-        public static final int LinearLayout1=0x7f090004;
-        public static final int action_settings=0x7f09001d;
-        public static final int adjustscreenbrightness=0x7f090000;
-        public static final int backlightcontrol=0x7f090001;
-        public static final int backlightsetting=0x7f090002;
-        public static final int broadcastTimer=0x7f090006;
-        public static final int buttonFlashlight=0x7f090003;
-        public static final int button_capture=0x7f090019;
-        public static final int camera_preview=0x7f090018;
-        public static final int chronometer1=0x7f09000b;
-        public static final int connect_phones=0x7f090017;
-        public static final int gridview=0x7f090005;
-        public static final int incoming_images=0x7f09001c;
-        public static final int incoming_messages=0x7f09001b;
-        public static final int intercom_broadcast=0x7f09000e;
-        public static final int intercom_broadcast_startbutton=0x7f090007;
-        public static final int intercom_broadcast_stopbutton=0x7f090008;
-        public static final int intercom_conf=0x7f09000f;
-        public static final int intercom_conf_call=0x7f09000a;
-        public static final int intercom_conf_cancel=0x7f090009;
-        public static final int intercom_dail_cancel=0x7f09000d;
-        public static final int intercom_dail_image=0x7f09000c;
-        public static final int intercom_incall_dail=0x7f090011;
-        public static final int intercom_p2p=0x7f090010;
-        public static final int intercom_p2p_call=0x7f090013;
-        public static final int intercom_p2p_cancel=0x7f090012;
-        public static final int launch_client=0x7f090014;
-        public static final int launch_server=0x7f090015;
-        public static final int server_ip=0x7f090016;
-        public static final int server_status=0x7f09001a;
+        public static final int Lights_list=0x7f0a0007;
+        public static final int LinearLayout1=0x7f0a000a;
+        public static final int action_settings=0x7f0a0023;
+        public static final int addLight=0x7f0a0006;
+        public static final int adjustscreenbrightness=0x7f0a0000;
+        public static final int backlightcontrol=0x7f0a0001;
+        public static final int backlightsetting=0x7f0a0002;
+        public static final int broadcastTimer=0x7f0a000c;
+        public static final int buttonFlashlight=0x7f0a0003;
+        public static final int button_capture=0x7f0a001f;
+        public static final int camera_preview=0x7f0a001e;
+        public static final int chronometer1=0x7f0a0011;
+        public static final int connect_phones=0x7f0a001d;
+        public static final int edit_ip=0x7f0a0008;
+        public static final int gridview=0x7f0a000b;
+        public static final int incoming_images=0x7f0a0022;
+        public static final int incoming_messages=0x7f0a0021;
+        public static final int intercom_broadcast=0x7f0a0014;
+        public static final int intercom_broadcast_startbutton=0x7f0a000d;
+        public static final int intercom_broadcast_stopbutton=0x7f0a000e;
+        public static final int intercom_conf=0x7f0a0015;
+        public static final int intercom_conf_call=0x7f0a0010;
+        public static final int intercom_conf_cancel=0x7f0a000f;
+        public static final int intercom_dail_cancel=0x7f0a0013;
+        public static final int intercom_dail_image=0x7f0a0012;
+        public static final int intercom_incall_dail=0x7f0a0017;
+        public static final int intercom_p2p=0x7f0a0016;
+        public static final int intercom_p2p_call=0x7f0a0019;
+        public static final int intercom_p2p_cancel=0x7f0a0018;
+        public static final int launch_client=0x7f0a001a;
+        public static final int launch_server=0x7f0a001b;
+        public static final int off=0x7f0a0004;
+        public static final int on=0x7f0a0005;
+        public static final int server_ip=0x7f0a001c;
+        public static final int server_status=0x7f0a0020;
+        public static final int setIp=0x7f0a0009;
     }
     public static final class integer {
         public static final int four_rows=0x7f050000;
@@ -91,16 +100,19 @@ public final class R {
         public static final int surveillance_server_activity=0x7f03000d;
     }
     public static final class menu {
-        public static final int emergency_lighting=0x7f080000;
-        public static final int light_control=0x7f080001;
-        public static final int main=0x7f080002;
+        public static final int emergency_lighting=0x7f090000;
+        public static final int light_control=0x7f090001;
+        public static final int main=0x7f090002;
     }
     public static final class string {
+        public static final int Add_light=0x7f060015;
         public static final int Light_control_title=0x7f060004;
         public static final int Light_off=0x7f060006;
         public static final int Light_on=0x7f060005;
         public static final int action_settings=0x7f060001;
         public static final int app_name=0x7f060000;
+        public static final int confirm_ip=0x7f060019;
+        public static final int editIp=0x7f060016;
         public static final int hello_world=0x7f060002;
         public static final int intercom_broadcast_announcement=0x7f06000e;
         public static final int intercom_broadcast_chronometer=0x7f06000b;
@@ -114,6 +126,8 @@ public final class R {
         public static final int intercom_home_p2p=0x7f060009;
         public static final int intercom_p2p_call=0x7f060010;
         public static final int intercom_p2p_cancel=0x7f060011;
+        public static final int no_ip_error=0x7f060018;
+        public static final int set_ip=0x7f060017;
         public static final int title_activity_comms_thread=0x7f060007;
         public static final int title_activity_emergency_lighting=0x7f060014;
         public static final int title_activity_light_control=0x7f060003;
@@ -140,10 +154,10 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f070000;
+        public static final int AppBaseTheme=0x7f080000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f070001;
+        public static final int AppTheme=0x7f080001;
     }
 }

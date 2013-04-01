@@ -22,5 +22,15 @@
     <string name="intercom_conference_call">Call</string>
     <string name="intercom_conference_cancel">Cancel</string>
     <string name="title_activity_emergency_lighting">Emergency Lighting</string>
+    <string name="Add_light">Add Light</string>
+    <string name="editIp">Enter your IP address</string>
+    <string name="set_ip">Set IP</string>
+    <string name="no_ip_error">No IP Address Set!</string>
+    <string name="confirm_ip">IP Address Set!</string>
+
+    <string-array name="Lights_list">
+        <item>Light1</item>
+        <item>Light2</item>
+    </string-array>
 
 </resources>
