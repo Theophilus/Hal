@@ -18,6 +18,6 @@ Intercom: A sub system that functions as a peer to peer video and audio calling 
 
 Climate:
 
-Lights:
+Lights: Controls connected lights to either be on or off based on the user's input.  This is done through a TCP/IP connection through sockets.
 
 Location:
