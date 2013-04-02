@@ -6,7 +6,7 @@ import SE_spring2013_g8.hal.Climate.ClimateControl;
 import SE_spring2013_g8.hal.Intercom.HomeView;
 import SE_spring2013_g8.hal.Lights.LightControl;
 import SE_spring2013_g8.hal.Surveillance.SurveillanceMainActivity;
-import SE_spring2013_g8.hal.audio.audio_home;
+import SE_spring2013_g8.hal.Audio.audio_home;
 import SE_spring2013_g8.hal.emerlight.EmergencyLighting;
 import android.app.Activity;
 import android.content.Intent;
@@ -29,7 +29,7 @@ public class MainActivity extends Activity {
 
 	    gridview.setOnItemClickListener(new OnItemClickListener() {
 	        public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-	            Toast.makeText(MainActivity.this, "" + position, Toast.LENGTH_SHORT).show();
+	            //Toast.makeText(MainActivity.this, "" + position, Toast.LENGTH_SHORT).show();
 	            if (position == 7) {
 	            	Intent intent = new Intent(MainActivity.this, LightControl.class);
 	            	startActivity(intent);
