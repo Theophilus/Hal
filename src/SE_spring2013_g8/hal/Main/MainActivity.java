@@ -1,6 +1,7 @@
 package SE_spring2013_g8.hal.Main;
 
 import SE_spring2013_g8.hal.R;
+import SE_spring2013_g8.hal.Climate.ClimateControl;
 import SE_spring2013_g8.hal.Intercom.HomeView;
 import SE_spring2013_g8.hal.Lights.LightControl;
 import SE_spring2013_g8.hal.Surveillance.SurveillanceMainActivity;
@@ -41,6 +42,10 @@ public class MainActivity extends Activity {
 	            }
 	            if (position == 4) {
 	            	Intent intent = new Intent(MainActivity.this, EmergencyLighting.class);
+	            	startActivity(intent);
+	            }
+	            if (position == 0) {
+	            	Intent intent = new Intent(MainActivity.this, ClimateControl.class);
 	            	startActivity(intent);
 	            }
 	        }
