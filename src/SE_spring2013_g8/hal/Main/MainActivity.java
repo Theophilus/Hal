@@ -1,5 +1,6 @@
 package SE_spring2013_g8.hal.Main;
 
+import lash.halapp.ViewDevActivity;
 import SE_spring2013_g8.hal.R;
 import SE_spring2013_g8.hal.Climate.ClimateControl;
 import SE_spring2013_g8.hal.Intercom.HomeView;
@@ -51,6 +52,10 @@ public class MainActivity extends Activity {
 	            }
 	            if (position == 3) {
 	            	Intent intent = new Intent(MainActivity.this, audio_home.class);
+	            	startActivity(intent);
+	            }
+	            if (position == 2) {
+	            	Intent intent = new Intent(MainActivity.this, ViewDevActivity.class);
 	            	startActivity(intent);
 	            }
 	        }
