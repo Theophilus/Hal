@@ -161,5 +161,12 @@
                 android:value="SE_spring2013_g8.hal.Main.MainActivity" />
         </activity>
     </application>
+    
+	<reciever android:name = "lash.globalbs.EventReciever">
+        <intent-filter>
+            <action android:name = "lash.globalbs.PROXIMITY" />
+            <action android:name = "lash.globalbs.ALRAM_TIME" />
+        </intent-filter>
+	</reciever>
 
 </manifest>
