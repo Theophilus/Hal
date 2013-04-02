@@ -82,12 +82,12 @@ public final class R {
         public static final int server_status=0x7f0a002b;
         public static final int setIp=0x7f0a0009;
         public static final int textView1=0x7f0a000f;
-        public static final int textView2=0x7f0a000e;
+        public static final int textView2=0x7f0a000d;
         public static final int textView3=0x7f0a0011;
         public static final int textView4=0x7f0a0012;
         public static final int textView5=0x7f0a0013;
         public static final int textView6=0x7f0a0015;
-        public static final int toggleButton1=0x7f0a000d;
+        public static final int toggleButton1=0x7f0a000e;
     }
     public static final class integer {
         public static final int four_rows=0x7f050000;
