@@ -5,6 +5,7 @@ import SE_spring2013_g8.hal.Climate.ClimateControl;
 import SE_spring2013_g8.hal.Intercom.HomeView;
 import SE_spring2013_g8.hal.Lights.LightControl;
 import SE_spring2013_g8.hal.Surveillance.SurveillanceMainActivity;
+import SE_spring2013_g8.hal.audio.audio_home;
 import SE_spring2013_g8.hal.emerlight.EmergencyLighting;
 import android.app.Activity;
 import android.content.Intent;
@@ -46,6 +47,10 @@ public class MainActivity extends Activity {
 	            }
 	            if (position == 0) {
 	            	Intent intent = new Intent(MainActivity.this, ClimateControl.class);
+	            	startActivity(intent);
+	            }
+	            if (position == 3) {
+	            	Intent intent = new Intent(MainActivity.this, audio_home.class);
 	            	startActivity(intent);
 	            }
 	        }

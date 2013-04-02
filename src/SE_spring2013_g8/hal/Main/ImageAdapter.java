@@ -47,7 +47,7 @@ public class ImageAdapter extends BaseAdapter {
     // references to our images
     private Integer[] mThumbIds = {
             R.drawable.climate_control_icon, R.drawable.ic_launcher,R.drawable.ic_launcher,
-            R.drawable.ic_launcher,R.drawable.emerlight_icon,R.drawable.intercom_icon,
+            R.drawable.intercom_spkr,R.drawable.emerlight_icon,R.drawable.intercom_icon,
             R.drawable.surveillanceicon,R.drawable.lightcontrolicon
     };
 
