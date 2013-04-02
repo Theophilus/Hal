@@ -1,4 +1,4 @@
-package SE_spring2013_g8.hal.audio;
+package SE_spring2013_g8.hal.Audio;
 
 import SE_spring2013_g8.hal.R;
 import android.app.Activity;
