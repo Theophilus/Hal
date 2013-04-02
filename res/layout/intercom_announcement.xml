@@ -5,15 +5,15 @@
     android:layout_height="fill_parent"
     android:orientation="vertical"
     tools:ignore="UseCompoundDrawables" >
-<!-- 
+
     <ImageView
         android:id="@+id/intercom_announcement_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="@dimen/default_gap"
+        android:layout_marginTop="50dp"
         android:src="@drawable/intercom_spkr" />
- -->
+ 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"

@@ -19,16 +19,16 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="50dp" />
-<!-- 
-    <android.support.v7.widget.GridLayout
+ 
+    <GridLayout
         android:id="@+id/GridView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:columnCount="@integer/two_rows"
         android:rowCount="@integer/three"
-        app:columnCount="@integer/four_rows"
-        app:rowCount="@integer/one" >
+        
+        tools:ignore="NewApi" >
 
         <ImageButton
             android:id="@+id/intercom_connect_camera"
@@ -47,7 +47,6 @@
             android:layout_column="1"
             android:layout_gravity="center"
             android:layout_row="0"
-            app:layout_column="2"
             android:src="@drawable/intercom_mic" />
 
         <ImageButton
@@ -59,13 +58,13 @@
             android:layout_row="1"
             android:src="@drawable/intercom_spkr" />
 
-    </android.support.v7.widget.GridLayout>
+    </GridLayout>
 
     <SeekBar
         android:id="@+id/seekBar1"
         android:layout_width="299dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        app:layout_gravity="center" />
- -->
+        />
+ 
 </LinearLayout>

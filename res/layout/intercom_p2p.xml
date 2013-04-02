@@ -3,13 +3,13 @@
     android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical" xmlns:tools="http://schemas.android.com/tools" tools:ignore="NewApi">
     
-     <android.support.v7.widget.GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:columnCount="2" >
+     <GridLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="100dp"
+         android:columnCount="2" >
 
         <Button
             android:id="@+id/intercom_p2p_cancel"
@@ -27,7 +27,7 @@
             android:layout_row="0"
             android:onClick="gotoDail"
             android:text="@string/intercom_p2p_call" />
-    </android.support.v7.widget.GridLayout>
+    </GridLayout>
     
 
 </LinearLayout>
