@@ -4,98 +4,89 @@
     android:layout_height="wrap_content"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="1dp"
-        android:layout_y="2dp"
-        android:text="Climate Control"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="11dp"
-        android:layout_y="111dp"
-        android:text="Mode"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
     <Button
-        android:id="@+id/button2"
-        android:layout_width="107dp"
-        android:layout_height="wrap_content"
-        android:layout_x="198dp"
-        android:layout_y="90dp"
-        android:text="Heat" />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="111dp"
-        android:layout_height="wrap_content"
-        android:layout_x="80dp"
-        android:layout_y="92dp"
-        android:text="Cool" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="8dp"
-        android:layout_y="36dp"
-        android:text="Temperature"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="138dp"
-        android:layout_y="35dp"
-        android:text="70 F"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:id="@+id/button3"
+        android:layout_width="173dp"
+        android:layout_height="72dp"
+        android:layout_x="188dp"
+        android:layout_y="276dp"
+        android:text="-" />
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="wrap_content"
+        android:layout_width="84dp"
         android:layout_height="wrap_content"
-        android:layout_x="5dp"
-        android:layout_y="236dp"
+        android:layout_x="0dp"
+        android:layout_y="473dp"
         android:text="Hold"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="170dp"
+        android:layout_height="72dp"
+        android:layout_x="193dp"
+        android:layout_y="163dp"
+        android:text="Cool" />
 
     <Button
         android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="226dp"
-        android:layout_y="160dp"
+        android:layout_width="160dp"
+        android:layout_height="65dp"
+        android:layout_x="413dp"
+        android:layout_y="278dp"
         android:text="+" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="8dp"
-        android:layout_y="171dp"
-        android:text="Set Tempurature"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:layout_x="4dp"
+        android:layout_y="299dp"
+        android:text="Set Temperature"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/button2"
+        android:layout_width="166dp"
+        android:layout_height="72dp"
+        android:layout_x="396dp"
+        android:layout_y="166dp"
+        android:text="Heat" />
+
+    <TextView
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="157dp"
-        android:layout_y="159dp"
-        android:text="-" />
+        android:layout_x="3dp"
+        android:layout_y="54dp"
+        android:text="Temperature"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <ToggleButton
         android:id="@+id/toggleButton1"
+        android:layout_width="183dp"
+        android:layout_height="78dp"
+        android:layout_x="189dp"
+        android:layout_y="439dp"
+        android:text="ToggleButton" />
+
+    <TextView
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="65dp"
-        android:layout_y="221dp"
-        android:text="ToggleButton" />
+        android:layout_x="177dp"
+        android:layout_y="54dp"
+        android:text="70 F"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="9dp"
+        android:layout_y="183dp"
+        android:text="Mode"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
     
 </AbsoluteLayout>
