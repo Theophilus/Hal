@@ -1,10 +1,8 @@
-package SE_spring2013_g8.hal.Audio;
+package SE_spring2013_g8.hal.audio;
 
 import SE_spring2013_g8.hal.R;
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 public class audio_home extends Activity {
 	@Override
