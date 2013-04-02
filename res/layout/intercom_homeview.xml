@@ -32,5 +32,14 @@
        	android:onClick="gotoP2PView"
         android:text="@string/intercom_home_p2p"
         android:textAlignment="center" />
+    
+    <Button
+        android:id="@+id/exit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|left"
+        android:onClick="exit_intercom"
+        android:text="@string/exit_intercom"
+        android:textAlignment="center" />
 
 </LinearLayout>

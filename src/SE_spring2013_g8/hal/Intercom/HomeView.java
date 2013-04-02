@@ -1,6 +1,7 @@
 package SE_spring2013_g8.hal.Intercom;
 
 import SE_spring2013_g8.hal.R;
+import SE_spring2013_g8.hal.Main.MainActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,6 +32,12 @@ public class HomeView extends Activity {
 	public void gotoConferenceView(View view) {
 		
 		Intent intent = new Intent(this, ConferenceView.class);
+	    startActivity(intent);
+	}
+	
+	public void exit_intercom(View view) {
+		
+		Intent intent = new Intent(this, MainActivity.class);
 	    startActivity(intent);
 	}
 }

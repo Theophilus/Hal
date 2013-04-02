@@ -21,6 +21,7 @@
     <string name="intercom_p2p_cancel">Cancel</string>
     <string name="intercom_conference_call">Call</string>
     <string name="intercom_conference_cancel">Cancel</string>
+    <string name="exit_intercom">Exit</string>
     <string name="title_activity_emergency_lighting">Emergency Lighting</string>
     <string name="Add_light">Add Light</string>
     <string name="editIp">Enter your IP address</string>

@@ -48,7 +48,7 @@ public final class R {
         public static final int GridView1=0x7f0a0026;
         public static final int Lights_list=0x7f0a0007;
         public static final int LinearLayout1=0x7f0a000a;
-        public static final int action_settings=0x7f0a003e;
+        public static final int action_settings=0x7f0a003f;
         public static final int addLight=0x7f0a0006;
         public static final int adjustscreenbrightness=0x7f0a0000;
         public static final int appsListView=0x7f0a0013;
@@ -60,16 +60,17 @@ public final class R {
         public static final int button3=0x7f0a001e;
         public static final int button4=0x7f0a001c;
         public static final int buttonFlashlight=0x7f0a0003;
-        public static final int button_capture=0x7f0a003a;
-        public static final int camera_preview=0x7f0a0039;
+        public static final int button_capture=0x7f0a003b;
+        public static final int camera_preview=0x7f0a003a;
         public static final int chronometer1=0x7f0a0025;
-        public static final int connect_phones=0x7f0a0038;
+        public static final int connect_phones=0x7f0a0039;
         public static final int edit_ip=0x7f0a0008;
+        public static final int exit=0x7f0a0030;
         public static final int getLocButton=0x7f0a0012;
         public static final int gridview=0x7f0a000b;
         public static final int homeLocTextView=0x7f0a000c;
-        public static final int incoming_images=0x7f0a003d;
-        public static final int incoming_messages=0x7f0a003c;
+        public static final int incoming_images=0x7f0a003e;
+        public static final int incoming_messages=0x7f0a003d;
         public static final int intercom_announcement_image=0x7f0a001f;
         public static final int intercom_broadcast=0x7f0a002d;
         public static final int intercom_broadcast_startbutton=0x7f0a0021;
@@ -82,23 +83,23 @@ public final class R {
         public static final int intercom_connect_spkr=0x7f0a0028;
         public static final int intercom_dail_cancel=0x7f0a002c;
         public static final int intercom_dail_image=0x7f0a002b;
-        public static final int intercom_incall_accept=0x7f0a0031;
-        public static final int intercom_incall_dail=0x7f0a0030;
-        public static final int intercom_incall_reject=0x7f0a0032;
+        public static final int intercom_incall_accept=0x7f0a0032;
+        public static final int intercom_incall_dail=0x7f0a0031;
+        public static final int intercom_incall_reject=0x7f0a0033;
         public static final int intercom_p2p=0x7f0a002f;
-        public static final int intercom_p2p_call=0x7f0a0034;
-        public static final int intercom_p2p_cancel=0x7f0a0033;
+        public static final int intercom_p2p_call=0x7f0a0035;
+        public static final int intercom_p2p_cancel=0x7f0a0034;
         public static final int latEditText=0x7f0a000f;
         public static final int latTextView=0x7f0a000d;
-        public static final int launch_client=0x7f0a0035;
-        public static final int launch_server=0x7f0a0036;
+        public static final int launch_client=0x7f0a0036;
+        public static final int launch_server=0x7f0a0037;
         public static final int lonEditText=0x7f0a0010;
         public static final int lonTextView=0x7f0a000e;
         public static final int off=0x7f0a0004;
         public static final int on=0x7f0a0005;
         public static final int seekBar1=0x7f0a002a;
-        public static final int server_ip=0x7f0a0037;
-        public static final int server_status=0x7f0a003b;
+        public static final int server_ip=0x7f0a0038;
+        public static final int server_status=0x7f0a003c;
         public static final int setHomeButton=0x7f0a0011;
         public static final int setIp=0x7f0a0009;
         public static final int textView1=0x7f0a0017;
@@ -141,17 +142,18 @@ public final class R {
         public static final int main=0x7f090002;
     }
     public static final class string {
-        public static final int Add_light=0x7f060015;
+        public static final int Add_light=0x7f060016;
         public static final int Light_control_title=0x7f060004;
         public static final int Light_off=0x7f060006;
         public static final int Light_on=0x7f060005;
         public static final int action_settings=0x7f060001;
         public static final int app_name=0x7f060000;
-        public static final int confirm_ip=0x7f060019;
-        public static final int curLoc=0x7f06001f;
-        public static final int editIp=0x7f060016;
+        public static final int confirm_ip=0x7f06001a;
+        public static final int curLoc=0x7f060020;
+        public static final int editIp=0x7f060017;
+        public static final int exit_intercom=0x7f060014;
         public static final int hello_world=0x7f060002;
-        public static final int homeLoc=0x7f06001b;
+        public static final int homeLoc=0x7f06001c;
         public static final int intercom_broadcast_announcement=0x7f06000e;
         public static final int intercom_broadcast_chronometer=0x7f06000b;
         public static final int intercom_broadcast_start=0x7f06000c;
@@ -164,15 +166,15 @@ public final class R {
         public static final int intercom_home_p2p=0x7f060009;
         public static final int intercom_p2p_call=0x7f060010;
         public static final int intercom_p2p_cancel=0x7f060011;
-        public static final int latTV=0x7f06001c;
-        public static final int lonTV=0x7f06001d;
-        public static final int no_ip_error=0x7f060018;
-        public static final int setHome=0x7f06001e;
-        public static final int set_ip=0x7f060017;
-        public static final int settTitle=0x7f060020;
-        public static final int settings=0x7f06001a;
+        public static final int latTV=0x7f06001d;
+        public static final int lonTV=0x7f06001e;
+        public static final int no_ip_error=0x7f060019;
+        public static final int setHome=0x7f06001f;
+        public static final int set_ip=0x7f060018;
+        public static final int settTitle=0x7f060021;
+        public static final int settings=0x7f06001b;
         public static final int title_activity_comms_thread=0x7f060007;
-        public static final int title_activity_emergency_lighting=0x7f060014;
+        public static final int title_activity_emergency_lighting=0x7f060015;
         public static final int title_activity_light_control=0x7f060003;
     }
     public static final class style {
@@ -204,3 +206,4 @@ public final class R {
         public static final int AppTheme=0x7f080001;
     }
 }
+
