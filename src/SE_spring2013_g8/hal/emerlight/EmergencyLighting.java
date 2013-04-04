@@ -18,9 +18,18 @@ import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+/**
+ * EmergencyLighting
+ * 
+ * This class creates the button and functionality for the
+ * flashlight button as well as the slider for the brightness
+ * 
+ * @author Adnan Miah
+ * @since 03-31-2013
+ */
 public class EmergencyLighting extends Activity {
 	
-    /** Called when the activity is first created. */
+    
     float BackLightValue = 0.5f; //dummy default value
 
 
@@ -31,6 +40,9 @@ public class EmergencyLighting extends Activity {
  
 	private Button button;
  
+	/**
+	 * onStop releases camera used when flashlight is to be turned off
+	 */
 	@Override
 	protected void onStop() {
 		super.onStop();
@@ -40,6 +52,10 @@ public class EmergencyLighting extends Activity {
 		}
 	}
  
+	/** 
+	 * onCreate creates the button and slider and connects them to the
+	 * brightness and flashlight control
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -68,7 +84,11 @@ public class EmergencyLighting extends Activity {
 		final Parameters p = camera.getParameters();
  
 		button.setOnClickListener(new OnClickListener() {
- 
+			
+			/**
+			 * If flashlight is off, this turns it on
+			 * If flashlight is on, this turns it off 
+			 */
 			@Override
 			public void onClick(View arg0) {
  
@@ -131,6 +151,10 @@ public class EmergencyLighting extends Activity {
 		
 		BackLightControl.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 		 
+			/**
+			 * Changes brightness of your phone and has an if statement
+			 * preventing it from ever going to zero brightness
+			 */
 			@Override
 		    public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
 		    // TODO Auto-generated method stub
@@ -149,15 +173,25 @@ public class EmergencyLighting extends Activity {
 		    getWindow().setAttributes(layoutParams);
 			}
 			
+			/**
+			 * Helps track the slider when 'slide' starts
+			 */
 		    @Override
 		    public void onStartTrackingTouch(SeekBar arg0) {
 		    }
+		    
+		    /**
+		     * Helps track the slider when 'slide' finishes
+		     */
 		    @Override
 		    public void onStopTrackingTouch(SeekBar arg0) {
 		    }
 		});
 	}
 
+	/**
+	 * No Menu option developed yet for Emergency Lighting
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
