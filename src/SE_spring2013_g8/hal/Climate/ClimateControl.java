@@ -7,6 +7,15 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 
+/**
+ * Climate Control Class
+ * 
+ * This class contains functionality for controling climate
+ * 
+ * @author Mohak Tamhane
+ *@version 1.0
+ */
+
 public class ClimateControl extends Activity {
 	
 	
