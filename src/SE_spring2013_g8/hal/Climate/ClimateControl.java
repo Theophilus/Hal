@@ -10,7 +10,7 @@ import android.view.View;
 /**
  * Climate Control Class
  * 
- * This class contains functionality for controling climate
+ * This class contains functionality for controlling climate
  * 
  * @author Mohak Tamhane
  *@version 1.0
