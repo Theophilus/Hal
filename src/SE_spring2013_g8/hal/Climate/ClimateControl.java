@@ -18,7 +18,9 @@ import android.view.View;
 
 public class ClimateControl extends Activity {
 	
-	
+/**
+ * Connects the CLimate control module to the main.	
+ */
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.climate_control);
