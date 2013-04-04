@@ -28,21 +28,22 @@ public final class R {
     }
     public static final class drawable {
         public static final int app_icon=0x7f020000;
-        public static final int climate_control_icon=0x7f020001;
-        public static final int emerlight_icon=0x7f020002;
-        public static final int gps_icon=0x7f020003;
-        public static final int ic_launcher=0x7f020004;
-        public static final int intercom_answer=0x7f020005;
-        public static final int intercom_camera=0x7f020006;
-        public static final int intercom_dail=0x7f020007;
-        public static final int intercom_dail_icon=0x7f020008;
-        public static final int intercom_icon=0x7f020009;
-        public static final int intercom_mic=0x7f02000a;
-        public static final int intercom_reject=0x7f02000b;
-        public static final int intercom_spkr=0x7f02000c;
-        public static final int lightcontrolicon=0x7f02000d;
-        public static final int main_backgroung=0x7f02000e;
-        public static final int surveillanceicon=0x7f02000f;
+        public static final int blinds_icon=0x7f020001;
+        public static final int climate_control_icon=0x7f020002;
+        public static final int emerlight_icon=0x7f020003;
+        public static final int gps_icon=0x7f020004;
+        public static final int ic_launcher=0x7f020005;
+        public static final int intercom_answer=0x7f020006;
+        public static final int intercom_camera=0x7f020007;
+        public static final int intercom_dail=0x7f020008;
+        public static final int intercom_dail_icon=0x7f020009;
+        public static final int intercom_icon=0x7f02000a;
+        public static final int intercom_mic=0x7f02000b;
+        public static final int intercom_reject=0x7f02000c;
+        public static final int intercom_spkr=0x7f02000d;
+        public static final int lightcontrolicon=0x7f02000e;
+        public static final int main_backgroung=0x7f02000f;
+        public static final int surveillanceicon=0x7f020010;
     }
     public static final class id {
         public static final int GridView1=0x7f0a0026;
@@ -56,9 +57,9 @@ public final class R {
         public static final int backlightsetting=0x7f0a0002;
         public static final int broadcastTimer=0x7f0a0020;
         public static final int button1=0x7f0a0014;
-        public static final int button2=0x7f0a0018;
-        public static final int button3=0x7f0a001e;
-        public static final int button4=0x7f0a001c;
+        public static final int button2=0x7f0a001b;
+        public static final int button3=0x7f0a0017;
+        public static final int button4=0x7f0a0019;
         public static final int buttonFlashlight=0x7f0a0003;
         public static final int button_capture=0x7f0a003b;
         public static final int camera_preview=0x7f0a003a;
@@ -102,12 +103,12 @@ public final class R {
         public static final int server_status=0x7f0a003c;
         public static final int setHomeButton=0x7f0a0011;
         public static final int setIp=0x7f0a0009;
-        public static final int textView1=0x7f0a0017;
+        public static final int textView1=0x7f0a001e;
         public static final int textView2=0x7f0a0015;
-        public static final int textView3=0x7f0a0019;
-        public static final int textView4=0x7f0a001a;
-        public static final int textView5=0x7f0a001b;
-        public static final int textView6=0x7f0a001d;
+        public static final int textView3=0x7f0a001c;
+        public static final int textView4=0x7f0a001d;
+        public static final int textView5=0x7f0a0018;
+        public static final int textView6=0x7f0a001a;
         public static final int toggleButton1=0x7f0a0016;
     }
     public static final class integer {
@@ -206,4 +207,3 @@ public final class R {
         public static final int AppTheme=0x7f080001;
     }
 }
-
