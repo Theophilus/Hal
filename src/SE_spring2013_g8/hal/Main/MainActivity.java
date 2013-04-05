@@ -6,7 +6,7 @@ import SE_spring2013_g8.hal.Climate.ClimateControl;
 import SE_spring2013_g8.hal.Intercom.HomeView;
 import SE_spring2013_g8.hal.Lights.LightControl;
 import SE_spring2013_g8.hal.Surveillance.SurveillanceMainActivity;
-import SE_spring2013_g8.hal.audio.audio_home;
+import SE_spring2013_g8.hal.Audio.audio_home;
 import SE_spring2013_g8.hal.emerlight.EmergencyLighting;
 import android.app.Activity;
 import android.content.Intent;
@@ -17,8 +17,24 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.Toast;
 
+/**
+ * MainActivity class
+ * 
+ *  MainActivity is an activity class that creates and displays the home view of the 
+ *  home automation system.
+ * 
+ * @author Theophilus Mensah
+ *
+ */
 public class MainActivity extends Activity {
 	
+	/**
+	 * onCreate prepares and displays the list of modules in the MainActivity view.
+	 * It listens and redirects the user to the view module clicked.
+	 *   
+	 * @param savedInstanceState an instance of the MainActivity class
+	 * 
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

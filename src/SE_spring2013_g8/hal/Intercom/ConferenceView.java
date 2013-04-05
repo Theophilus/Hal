@@ -6,19 +6,41 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+/**
+ * ConferenceView class
+ * 
+ * ConferenceView is an activity class that displays the view of the conference option
+ * 
+ * @author Theophilus Mensah
+ *
+ */
 public class ConferenceView extends Activity {
 	
-	
+	/**
+	 * onCreate prepares and displays the conference view 
+	 * @param savedInstanceState an instance of the ConferenceView activity class
+	 */
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.intercom_conference);
 		
 		}
+	/**
+	 * gotoHome redirects the user to the home view when cancel is clicked
+	 * 
+	 * @param view the view to be displayed
+	 */
 	
 	public void gotoHome(View view) {
 		Intent intent = new Intent(this, HomeView.class);
 	    startActivity(intent);
 	}
+	
+	/**
+	 * gotoConnCall redirects the user to the connected call view when a call is accepted
+	 * 
+	 * @param view the view to be displayed
+	 */
 	
 	public void gotoConnCall(View view) {
 		Intent intent = new Intent(this, ConnCallView.class);

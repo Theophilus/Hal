@@ -79,7 +79,7 @@
                 android:value="SE_spring2013_g8.hal.Intercom.HomeView" />
         </activity>
         <activity
-            android:name=".Intercom.DailView"
+            android:name=".Intercom.DialView"
             android:label="Dailing..."
             android:parentActivityName="SE_spring2013_g8.hal.Intercom.HomeView" >
             <meta-data
