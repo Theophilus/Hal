@@ -27,29 +27,96 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+/**
+ * ClientActivity Class
+ * 
+ * This class runs the activity which creates and streams the surveillance video.
+ * 
+ * @author Steve
+ *
+ */
+
 public class ClientActivity extends Activity {
 
+	/**
+	 * EditText containing the IP address of the server (the receiving end of this video)
+	 */
     private EditText serverIpEditText;
-	private String serverIp = "";
-	//private String serverIp = "192.168.1.148";
+    
+    /**
+     * Button to connect this tablet with the tablet for receiving the streamed video
+     */
     private Button connectPhones;
+    
+    /**
+     * String containing the IP address of the server.
+     */
     private String serverIpAddress = "";
+    
+    /**
+     * boolean used to determine if the client is already connected to the server (to avoid trying to connect more than once)
+     */
     private boolean connected = false;
-    private Handler handler = new Handler();
+    
+    //private Handler handler = new Handler();
+    
+    /**
+     * Socket used for creating a socket connection to the server
+     */
     Socket socket;
     
+    /**
+     * Camera for accessing the camera hardware on an android device 
+     */
 	private Camera mCamera;
+	
+	/**
+	 * CameraPreview for accessing and displaying the preview video produced by the camera 
+	 */
 	private CameraPreview mPreview;
+	
+	/**
+	 * MediaRecorder for 
+	 */
 	private MediaRecorder mMediaRecorder;
+	
+	/**
+	 * int of the index of the camera to use
+	 */
+	private int mCameraIndex = 0;
+	
+	/**
+	 * boolean representing the current recording state of the camera
+	 */
+	private boolean isRecording = false;
+	
+	/**
+	 * Button used for toggling saving video on/off
+	 */
+	private Button captureButton;
+	
+	/**
+	 * byte[] used to store a video frame from the camera preview
+	 */
+	byte[] callbackImage;
+	
+	/**
+	 * int width of the video frame from the camera preview
+	 */
+	int callbackImageWidth = 0;
+	
+	/**
+	 * int height of the video frame from the camera preview
+	 */
+	int callbackImageHeight = 0;
+	
 	public static final int MEDIA_TYPE_IMAGE = 1;
 	public static final int MEDIA_TYPE_VIDEO = 2;
 	String TAG = "MainActivity";
-	private int mCameraIndex = 0;
-	private boolean isRecording = false;
-	private Button captureButton;
-	byte[] callbackImage;
-	int callbackImageWidth = 0;
-	int callbackImageHeight = 0;
+	
+	/**
+	 * PreviewCallback of the video preview which returns a video frame
+	 */
 	
     PreviewCallback previewCallback = new PreviewCallback() {
         public void onPreviewFrame(byte[] data, Camera camera) {
@@ -57,6 +124,10 @@ public class ClientActivity extends Activity {
         }
     };    
 	
+    
+    /**
+     * Creates the activity for the client
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -145,12 +216,14 @@ public class ClientActivity extends Activity {
 		);
     }
     
+    /**
+     * OnClickListener used to listen for the connect button
+     */
     private OnClickListener connectListener = new OnClickListener() {
 
         @Override
         public void onClick(View v) {
             if (!connected) {
-                //serverIpAddress = serverIp;
             	serverIpAddress = serverIpEditText.getText().toString();
                 if (!serverIpAddress.equals("")) {
                     Thread cThread = new Thread(new ClientThread());
@@ -160,6 +233,13 @@ public class ClientActivity extends Activity {
         }
     };
 
+    /**
+     * 
+     * ClientThread which connects to the server asymmetrically
+     * 
+     * @author Steve
+     *
+     */
     public class ClientThread implements Runnable {
 
         public void run() {
@@ -208,6 +288,7 @@ public class ClientActivity extends Activity {
         }
     }
 	
+    /*
     private String arrayDataToString (byte[] byteArray) {
     	String arrayData = "";
     	arrayData = arrayData + "Array Length = " + byteArray.length;
@@ -215,13 +296,23 @@ public class ClientActivity extends Activity {
     	arrayData = arrayData + "  **  " + "Second Element = " + byteArray[1];
     	arrayData = arrayData + "  **  " + "Last Element = " + byteArray[byteArray.length-1];
     	return arrayData;
-    }
+    }*/
     
+    /**
+     * Sets the text of the capture button to indicate the current status of capturing
+     * 
+     * @param s the text to set for the capture button
+     */
 	public void setCaptureButtonText(String s) {
 	    captureButton.setText(s);
 	}
 	
-
+	/**
+	 * 
+	 * Prepares a video recorder 
+	 * 
+	 * @return boolean representing creation without exceptions
+	 */
 	private boolean prepareVideoRecorder(){
 
 	    //mCamera = openFrontFacingCameraGingerbread();
@@ -267,6 +358,11 @@ public class ClientActivity extends Activity {
 	    return true;
 	}
 	
+	
+	/**
+	 * inflate the options menu
+	 * 
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -274,6 +370,12 @@ public class ClientActivity extends Activity {
 		return true;
 	}
 	
+	/**
+	 * 
+	 * Find and open the frontfacing camera 
+	 * 
+	 * @return Camera which is the frontfacing camera found and opened
+	 */
 	private Camera openFrontFacingCameraGingerbread() {
 		String TAG = "openFrontFacingCameraGingerbread";
 		int cameraCount = 0;
@@ -295,7 +397,12 @@ public class ClientActivity extends Activity {
 		return cam;
 	}
 	
-	/** Create a File for saving an image or video */
+	/**
+	 * Create a File for saving an image or video
+	 * 
+	 * @param type for creating the name of the media file
+	 * @return null
+	 */
 	private static File getOutputMediaFile(int type) {
 	    // To be safe, you should check that the SDCard is mounted
 	    // using Environment.getExternalStorageState() before doing this.
@@ -334,6 +441,9 @@ public class ClientActivity extends Activity {
 	    return mediaFile;
 	}
 	
+	/**
+	 * release the mediarecorder and camera onPause
+	 */
     @Override
     protected void onPause() {
         super.onPause();
@@ -341,6 +451,9 @@ public class ClientActivity extends Activity {
         releaseCamera();              // release the camera immediately on pause event
     }
 
+    /**
+     * release the mediarecorder
+     */
     private void releaseMediaRecorder(){
         if (mMediaRecorder != null) {
             mMediaRecorder.reset();   // clear recorder configuration
@@ -350,6 +463,9 @@ public class ClientActivity extends Activity {
         }
     }
 
+    /**
+     * release the camera
+     */
     private void releaseCamera(){
         if (mCamera != null){
             mCamera.release();        // release the camera for other applications

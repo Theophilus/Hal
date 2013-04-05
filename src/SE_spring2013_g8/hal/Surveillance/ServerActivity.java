@@ -27,17 +27,61 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class ServerActivity extends Activity {
+/**
+ * ServerActivity Class
+ * 
+ * This class runs the activity which receives and displays the surveillance.
+ * 
+ * @author Steve
+ *
+ */
 
+public class ServerActivity extends Activity {
+	/**
+	 * TextView describing the server's current status
+	 */	
     private TextView serverStatus;
+    
+    /**
+     * String IP address of the "server" tablet (the tablet which views the video streams)
+     */
     public static String SERVERIP = "10.0.2.15"; // default ip
+    
+    /**
+     * int Port of the "server" tablet (the tablet which views the video streams) 
+     */
     public static final int SERVERPORT = 8080; // designate a port
+    
+    /**
+     * handler which handles asynchronous threads communicating with the main UI thread
+     */
     private Handler handler = new Handler();
+    
+    /**
+     * ServerSocket of the server
+     */
     private ServerSocket serverSocket;
+    
+    /**
+     * MediaPlayer used to play the streamed video
+     */
     MediaPlayer mMediaPlayer;
+    
+    /**
+     * ImageView for displaying the streamed "video" (which is actually individual images)
+     */
     ImageView incomingImages;
+    
+    /**
+     * Bitmap of the individual video frames which are sent to the server
+     */
     Bitmap incomingImage;
 
+	/**
+	 * Creates the main activity of the surveillance module
+	 * 
+	 * @param savedInstanceState the saved instance state
+	 */	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,16 +92,22 @@ public class ServerActivity extends Activity {
         SERVERIP = getLocalIpAddress();
 
         //create view to hold images being sent from client
-        incomingImages = (ImageView) findViewById(R.id.incoming_images);
-        
+        incomingImages = (ImageView) findViewById(R.id.incoming_images);        
         
     	//start server thread
         Thread fst = new Thread(new ServerThread());
         fst.start();
-        
-
     }
 
+    
+    /**
+     * ServerThread Class
+     * 
+     * This class runs the thread for connecting to the client over sockets
+     * 
+     * @author Steve
+     *
+     */
     public class ServerThread implements Runnable {
 
         public void run() {
@@ -147,6 +197,7 @@ public class ServerActivity extends Activity {
         }
     }
     
+    /*
     private String arrayDataToString (byte[] byteArray) {
     	String arrayData = "";
     	arrayData = arrayData + "Array Length = " + byteArray.length;
@@ -155,8 +206,13 @@ public class ServerActivity extends Activity {
     	arrayData = arrayData + "  **  " + "Last Element = " + byteArray[byteArray.length-1];
     	return arrayData;
     }
+    */
     
-    // gets the ip address of your phone's network
+    /**
+     * get's the local IP address of the current android device
+     * 
+     * @return String of the IP address of the current android device
+     */
     private String getLocalIpAddress() {
         try {
             for (Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements();) {
@@ -177,6 +233,9 @@ public class ServerActivity extends Activity {
         return null;
     }
 
+    /**
+     * Closes the socket when the android application stops
+     */    
     @Override
     protected void onStop() {
         super.onStop();
@@ -188,6 +247,15 @@ public class ServerActivity extends Activity {
          }
     }
     
+
+    /**
+     * Converts from the NV21 image format which is a byte array to a bitmap
+     * 
+     * @param callbackImageWidth width of the image to be converted
+     * @param callbackImageHeight height of the image to be converted
+     * @param imageArray byte array containing the image
+     * @return Bitmap the generated bitmap
+     */
     private Bitmap getBitmapFromNV21 (int callbackImageWidth, int callbackImageHeight, byte[] imageArray) {
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
 		YuvImage yuvImage = new YuvImage(imageArray, ImageFormat.NV21, callbackImageWidth, callbackImageHeight, null);
