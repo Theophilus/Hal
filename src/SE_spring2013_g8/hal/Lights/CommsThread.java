@@ -6,18 +6,37 @@ import java.io.OutputStream;
 import java.net.Socket;
 
 import android.util.Log;
-
+/**
+ * CommsThread class
+ * 
+ * Class used to create a socket between the application and a given server IP
+ * 
+ * @author Mike
+ *
+ */
 public class CommsThread extends Thread {
+	/**
+	 * used to hold the socket information
+	 */
 	private final Socket socket;
+	/**
+	 * used to hold the input stream data
+	 */
 	private final InputStream inputStream;
+	/**
+	 * used to hold the output stream data
+	 */
 	private final OutputStream outputStream;
+	/**
+	 * constructor that initializes a socket when the class is created
+	 * @param sock
+	 */
 	public CommsThread(Socket sock) {
 		socket = sock;
 		InputStream tmpIn = null;
 		OutputStream tmpOut = null;
 		try {
-			//---creates the input stream and output stream objects
-			// for reading and writing through the sockets---
+
 			tmpIn = socket.getInputStream();
 			tmpOut = socket.getOutputStream();
 		} catch (IOException e) {
@@ -27,18 +46,15 @@ public class CommsThread extends Thread {
 	outputStream = tmpOut;
 	}
 	
+	/**
+	 * method used to read information from the server
+	 */
 	public void run() {
-		//---buffer store for the stream---
 		byte[] buffer = new byte[1024];
-		//---bytes returned from read()---
 		int bytes;
-		//---keep listening to the InputStream until an
-		// exception occurs---
 		while (true) {
 			try {
-				//---read from the inputStream---
 				bytes = inputStream.read(buffer);
-				//---update the main activity UI---
 				LightControl.UIupdater.obtainMessage(
 				0,bytes, -1, buffer).sendToTarget();
 			} catch (IOException e) {
@@ -47,15 +63,18 @@ public class CommsThread extends Thread {
 		}
 	}
 	
-	//---call this from the main activity to
-	// send data to the remote device---
+	/**
+	 * method used to write to the server
+	 * @param bytes
+	 */
 	public void write(byte[] bytes) {
 		try {
 			outputStream.write(bytes);
 		} catch (IOException e) { }
 	}
-		//---call this from the main activity to
-		// shutdown the connection---
+	/**
+	 * method that shuts down the connection
+	 */
 	public void cancel() {
 		try {
 			socket.close();

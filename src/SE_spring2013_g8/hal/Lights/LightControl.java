@@ -20,36 +20,71 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
+/**
+ * LightControl class
+ * 
+ * Class to control the lights by relaying user inputs to a server
+ * 
+ * @author Mike
+ *
+ */
 public class LightControl extends Activity {
+	/**
+	 * nickname sent to server to confirm connection
+	 */
 	static final String NICKNAME = "HAL Online";
+	/**
+	 * type inetaddress used to create a socket
+	 */
 	InetAddress serverAddress;
+	/**
+	 * holds the location of the socket in memory
+	 */
 	Socket socket;
-	String ipv4;
+	/**
+	 * holds the IP address input by the user
+	 */
 	String ipAddress;
+	/**
+	 * holds the position of the item selected in the spinner
+	 */
 	String lightNum;
-	//---all the Views---
+	/**
+	 * holds the message received by the server
+	 */
 	static TextView txtMessagesReceived;
+	/**
+	 * holds the input from the edit text box
+	 */
 	EditText txtMessage;
-	//---thread for communicating on the socket---
+	/**
+	 * Holds the class that creates the socket and communicates across the created socket
+	 */
 	CommsThread commsThread;
-	//---used for updating the UI on the main activity---
+	/**
+	 * updates the UI on the main activity
+	 */
 	static Handler UIupdater = new Handler() {
 	};
 	
+	/**
+	 * CreateCommThreadTask class
+	 * 
+	 * Class used to initialize the creation of the socket
+	 * 
+	 * @author Mike
+	 *
+	 */
 	private class CreateCommThreadTask extends AsyncTask
 	<Void, Integer, Void> {
 		@Override
 		protected Void doInBackground(Void... params) {
 			try {
-				//---create a socket---
 				serverAddress =
 				InetAddress.getByName(ipAddress);
-				//--remember to change the IP address above to match your own--
 				socket = new Socket(serverAddress, 500);
 				commsThread = new CommsThread(socket);
 				commsThread.start();
-				//---sign in for the user; sends the nick name---
 				sendToServer(NICKNAME);
 			} catch (UnknownHostException e) {
 				Log.d("Sockets", e.getLocalizedMessage());
@@ -60,11 +95,25 @@ public class LightControl extends Activity {
 		}
 	}
 	
+	/**
+	 * method used to display the ip address as of now.  Will be changed later to add a light to the system
+	 * @param view
+	 */
+	
 	public void addLight(View view) {
 		Toast prName = Toast.makeText(this,ipAddress,Toast.LENGTH_LONG);
 		prName.setGravity(0,0,0);
 		prName.show();
 	}
+	
+	/**
+	 * WriteToServerTask class
+	 * 
+	 * Used to send data to the server through the commsThread class
+	 * 
+	 * @author Mike
+	 *
+	 */
 	
 	private class WriteToServerTask extends AsyncTask
 	<byte[], Void, Void> {
@@ -73,6 +122,15 @@ public class LightControl extends Activity {
 			return null;
 		}
 	}
+	
+	/**
+	 * CloseSocketTask
+	 * 
+	 * Starts the process of closing the socket when the program finishes
+	 * 
+	 * @author Mike
+	 *
+	 */
 	private class CloseSocketTask extends AsyncTask
 	<Void, Void, Void> {
 		@Override
@@ -87,6 +145,12 @@ public class LightControl extends Activity {
 			return null;
 		}
 	}
+	
+	/**
+	 * Method used to set the IP address of the server
+	 * 
+	 * @param view
+	 */
 	
 	public void set_ip(View view) {
 		EditText editText = (EditText) findViewById(R.id.edit_ip);
@@ -118,10 +182,13 @@ public class LightControl extends Activity {
 		    }
 
 		});
-		//---get the views---
 	}
+	/**
+	 * sends message to turn the light on to the server when the button is clicked
+	 * @param view
+	 */
+	
 	public void onClickSendOn(View view) {
-		//---send the message 'on' to the server---
 		if (ipAddress != null) {
 			sendToServer("Light_on" + " " + lightNum);
 		}
@@ -131,8 +198,11 @@ public class LightControl extends Activity {
 			prName.show();
 		}
 	}
+	/**
+	 * method used to turn the light off when the button is selected
+	 * @param view
+	 */
 	public void onClickSendOff(View view) {
-		//---send the message 'off' to the server---
 		if (ipAddress != null) {
 			sendToServer("Light_off" + " " + lightNum);
 		}
@@ -142,16 +212,27 @@ public class LightControl extends Activity {
 			prName.show();
 		}
 	}
+	
+	/**
+	 * method used to send a message to the server to be displayed
+	 * @param message
+	 */
 	private void sendToServer(String message) {
 		byte[] theByteArray =
 		message.getBytes();
 		new WriteToServerTask().execute(theByteArray);
 	}
+	/**
+	 * method that tells the program what to do when the app resumes.  Re-initializes the socket
+	 */
 	@Override
 	public void onResume() {
 		super.onResume();
 		new CreateCommThreadTask().execute();
 	}
+	/**
+	 * closes the socket on pause.
+	 */
 	@Override
 	public void onPause() {
 		super.onPause();
