@@ -12,15 +12,6 @@
         android:layout_y="276dp"
         android:text="-" />
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="84dp"
-        android:layout_height="wrap_content"
-        android:layout_x="0dp"
-        android:layout_y="473dp"
-        android:text="Hold"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
     <Button
         android:id="@+id/button1"
         android:layout_width="170dp"
@@ -77,7 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_x="177dp"
         android:layout_y="54dp"
-        android:text="70 F"
+        android:text="70"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -87,6 +78,42 @@
         android:layout_x="9dp"
         android:layout_y="183dp"
         android:text="Mode"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="184dp"
+        android:layout_y="99dp"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="17dp"
+        android:layout_y="461dp"
+        android:text="Hold"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="209dp"
+        android:layout_y="56dp"
+        android:text="F"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="5dp"
+        android:layout_y="104dp"
+        android:text="Mode Selected"
         android:textAppearance="?android:attr/textAppearanceLarge" />
     
 </AbsoluteLayout>
