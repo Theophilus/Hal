@@ -185,5 +185,8 @@
             <action android:name = "lash.globalbs.ALRAM_TIME" />
         </intent-filter>
 	</reciever>
+	
+	<uses-permission android:name="android.permission.INTERNET"> 
+	    </uses-permission>
 
 </manifest>
