@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.*;
 import android.view.View.OnClickListener;
 import android.widget.*;
+import java.net.URL;
+import java.io.InputStream;
+import android.os.Bundle;
 
 /**
  * Climate Control Class
@@ -39,6 +42,28 @@ public class ClimateControl extends Activity implements OnClickListener{
 		temp=(TextView)findViewById(R.id.textView4);
 		plus.setOnClickListener(this);
 		minus.setOnClickListener(this);
+		final String my_server_ip_address_and_port_number = "192.168.1.100:3344";
+		final ToggleButton toggleButton = (ToggleButton) findViewById(R.id.toggleButton1);
+				
+		toggleButton.setOnClickListener(new View.OnClickListener(){
+				
+			public void onClick(View v) {
+				if (toggleButton.isChecked()) { 
+					try {
+						final InputStream is = new URL("http://"+ my_server_ip_address_and_port_number +"/command/on").openStream();
+						}
+					catch (Exception e) { 
+						}
+				} else { 
+					try {
+						final InputStream is = new URL("http://"+ my_server_ip_address_and_port_number +"/command/off").openStream();
+				}
+				catch (Exception e) { 
+					}
+				} 
+			}
+		});
+				
 		btn1.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -73,6 +98,8 @@ public class ClimateControl extends Activity implements OnClickListener{
 			temp.setText(strcounter);
 			
 		}
+		
+		
 	}
 
 }
