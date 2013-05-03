@@ -36,10 +36,10 @@ public class ClimateControl extends Activity implements OnClickListener{
 		setContentView(R.layout.climate_control);
 		btn1=(Button)findViewById(R.id.button1);
 		btn2=(Button)findViewById(R.id.button2);
-		plus=(Button)findViewById(R.id.button4);
-		minus=(Button)findViewById(R.id.button3);
-		mode=(TextView)findViewById(R.id.textView2);
-		temp=(TextView)findViewById(R.id.textView4);
+		plus=(Button)findViewById(R.id.button3);
+		minus=(Button)findViewById(R.id.button4);
+		mode=(TextView)findViewById(R.id.textView8);
+		temp=(TextView)findViewById(R.id.textView5);
 		plus.setOnClickListener(this);
 		minus.setOnClickListener(this);
 		final String my_server_ip_address_and_port_number = "192.168.1.100:3344";
