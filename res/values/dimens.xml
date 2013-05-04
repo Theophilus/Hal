@@ -8,5 +8,10 @@
     <dimen name="h">200dp</dimen>
     <dimen name="k">50dp</dimen>
     <dimen name="t">40dp</dimen>
+    <dimen name="r">20dp</dimen>
+    <dimen name="i">32dp</dimen>
+    <dimen name="y">32dp</dimen>
+    <dimen name="riya50">50dp</dimen>
+    <dimen name="riya100">100dp</dimen>
 
 </resources>

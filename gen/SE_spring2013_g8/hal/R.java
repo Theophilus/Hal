@@ -26,10 +26,15 @@ public final class R {
         public static final int activity_horizontal_margin=0x7f050000;
         public static final int activity_vertical_margin=0x7f050001;
         public static final int h=0x7f050004;
+        public static final int i=0x7f050008;
         public static final int k=0x7f050005;
         public static final int m=0x7f050003;
         public static final int o=0x7f050002;
+        public static final int r=0x7f050007;
+        public static final int riya100=0x7f05000b;
+        public static final int riya50=0x7f05000a;
         public static final int t=0x7f050006;
+        public static final int y=0x7f050009;
     }
     public static final class drawable {
         public static final int app_icon=0x7f020000;

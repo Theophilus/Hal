@@ -3,6 +3,7 @@ package SE_spring2013_g8.hal.Climate;
 import SE_spring2013_g8.hal.R;
 import android.app.Activity;
 //import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.*;
 import android.view.View.OnClickListener;
@@ -26,6 +27,7 @@ public class ClimateControl extends Activity implements OnClickListener{
 	TextView mode, temp;
 	int counter = 70;
 	String strcounter;
+	  
 	
 /**
  * Connects the CLimate control module to the main.	
@@ -33,7 +35,9 @@ public class ClimateControl extends Activity implements OnClickListener{
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
 		setContentView(R.layout.climate_control);
+		
 		btn1=(Button)findViewById(R.id.button1);
 		btn2=(Button)findViewById(R.id.button2);
 		plus=(Button)findViewById(R.id.button3);
