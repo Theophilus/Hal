@@ -53,19 +53,23 @@ public final class R {
         public static final int intercom_spkr=0x7f02000d;
         public static final int lightcontrolicon=0x7f02000e;
         public static final int main_backgroung=0x7f02000f;
-        public static final int surveillanceicon=0x7f020010;
+        public static final int sun=0x7f020010;
+        public static final int surveillanceicon=0x7f020011;
     }
     public static final class id {
         public static final int GridView1=0x7f0b0029;
         public static final int Lights_list=0x7f0b0007;
         public static final int LinearLayout1=0x7f0b000a;
-        public static final int action_settings=0x7f0b0042;
+        public static final int ListView01=0x7f0b0043;
+        public static final int ScrollView01=0x7f0b0044;
+        public static final int action_settings=0x7f0b0045;
         public static final int addLight=0x7f0b0006;
         public static final int adjustscreenbrightness=0x7f0b0000;
         public static final int appsListView=0x7f0b0013;
         public static final int backlightcontrol=0x7f0b0001;
         public static final int backlightsetting=0x7f0b0002;
         public static final int broadcastTimer=0x7f0b0023;
+        public static final int btnJSON=0x7f0b0042;
         public static final int button1=0x7f0b0014;
         public static final int button2=0x7f0b0017;
         public static final int button3=0x7f0b0018;
@@ -146,9 +150,11 @@ public final class R {
         public static final int intercom_homeview=0x7f03000c;
         public static final int intercom_incall=0x7f03000d;
         public static final int intercom_p2p=0x7f03000e;
-        public static final int surveillance_activity_main=0x7f03000f;
-        public static final int surveillance_client_activity=0x7f030010;
-        public static final int surveillance_server_activity=0x7f030011;
+        public static final int list_item=0x7f03000f;
+        public static final int surveillance_activity_main=0x7f030010;
+        public static final int surveillance_client_activity=0x7f030011;
+        public static final int surveillance_server_activity=0x7f030012;
+        public static final int weather=0x7f030013;
     }
     public static final class menu {
         public static final int emergency_lighting=0x7f0a0000;

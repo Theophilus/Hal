@@ -8,6 +8,7 @@ import SE_spring2013_g8.hal.Lights.LightControl;
 import SE_spring2013_g8.hal.Surveillance.SurveillanceMainActivity;
 import SE_spring2013_g8.hal.audio.audio_home;
 import SE_spring2013_g8.hal.emerlight.EmergencyLighting;
+import SE_spring2013_g8.hal.Weather.Weather;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -72,6 +73,10 @@ public class MainActivity extends Activity {
 	            }
 	            if (position == 2) {
 	            	Intent intent = new Intent(MainActivity.this, ViewDevActivity.class);
+	            	startActivity(intent);
+	            }
+	            if (position == 1) {
+	            	Intent intent = new Intent(MainActivity.this, Weather.class);
 	            	startActivity(intent);
 	            }
 	        }

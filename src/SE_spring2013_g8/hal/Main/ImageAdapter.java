@@ -87,7 +87,7 @@ public class ImageAdapter extends BaseAdapter {
      * Array of images to displayed in the view
      */
     private Integer[] mThumbIds = {
-            R.drawable.climate_control_icon, R.drawable.blinds_icon,R.drawable.gps_icon,
+            R.drawable.climate_control_icon, R.drawable.sun,R.drawable.gps_icon,
             R.drawable.intercom_spkr,R.drawable.emerlight_icon,R.drawable.intercom_icon,
             R.drawable.surveillanceicon,R.drawable.lightcontrolicon
     };
