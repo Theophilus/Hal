@@ -154,7 +154,14 @@
 
                 <category android:name="android.intent.category.Default" />
             </intent-filter>
-        </activity>
+        </activity>        
+        <receiver android:name=".emerlight.MyReceiver">
+        	<intent-filter>
+            	<action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+            	<action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+        	</intent-filter>
+    	</receiver>
+    	
         <activity
             android:name=".Climate.ClimateControl"
             android:label="Climate"
