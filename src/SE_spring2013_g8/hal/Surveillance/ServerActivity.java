@@ -1,20 +1,23 @@
 package SE_spring2013_g8.hal.Surveillance;
 
 import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.IOException;
+import java.net.DatagramPacket;
 import java.net.InetAddress;
+import java.net.MulticastSocket;
 import java.net.NetworkInterface;
 import java.net.ServerSocket;
-import java.net.Socket;
 import java.net.SocketException;
 import java.util.Enumeration;
 
 import org.apache.http.conn.util.InetAddressUtils;
 
+//import com.example.hellogridview.MainActivity;
+
 import SE_spring2013_g8.hal.R;
 import android.app.Activity;
+import android.content.Context;
 import android.content.pm.ActivityInfo;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.ImageFormat;
@@ -24,8 +27,13 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.AdapterView.OnItemClickListener;
 
 /**
  * ServerActivity Class
@@ -76,6 +84,10 @@ public class ServerActivity extends Activity {
      * Bitmap of the individual video frames which are sent to the server
      */
     Bitmap incomingImage;
+    
+	final ImageAdapter mImageAdapter = new ImageAdapter(this);
+	
+	int preferredStreamId = 0;
 
 	/**
 	 * Creates the main activity of the surveillance module
@@ -93,7 +105,20 @@ public class ServerActivity extends Activity {
 
         //create view to hold images being sent from client
         incomingImages = (ImageView) findViewById(R.id.incoming_images);        
-        
+
+        //create the gridview
+        GridView gridview = (GridView) findViewById(R.id.gridview);
+	    gridview.setAdapter(mImageAdapter);
+	    
+	    //set logic to select a video stream to display as the main video stream
+	    gridview.setOnItemClickListener(new OnItemClickListener() {
+	        public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+	        	int streamId = mImageAdapter.getIdByPosition(position);
+	            Toast.makeText(getBaseContext(), "ID of stream: " + streamId, Toast.LENGTH_SHORT).show();
+	            preferredStreamId = streamId;
+	        }
+	    });
+	    
     	//start server thread
         Thread fst = new Thread(new ServerThread());
         fst.start();
@@ -112,79 +137,55 @@ public class ServerActivity extends Activity {
 
         public void run() {
             try {
-                if (SERVERIP != null) {
-                    handler.post(new Runnable() {
+
+            	
+        		MulticastSocket server = new MulticastSocket(1234);
+        		InetAddress group = InetAddress.getByName("234.5.6.7");
+        		server.joinGroup(group);
+        		boolean infinite = true;
+        		
+        		/* Server continually receives data and prints them */
+        		while(infinite) {
+        			
+        			handler.post(new Runnable() {
                         @Override
                         public void run() {
-                        	
-                            serverStatus.setText("Listening on IP: " + SERVERIP);
+                            serverStatus.setText("Connected.");
                         }
                     });
-                    serverSocket = new ServerSocket(SERVERPORT);
-                    while (true) {
-                        // listen for incoming clients
-                        Socket client = serverSocket.accept();
-                        
-                        handler.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                serverStatus.setText("Connected.");
-                            }
-                        });
+        			
+        			byte buf[] = new byte[6000];
+        			DatagramPacket data = new DatagramPacket(buf, buf.length);
+        			server.receive(data);
+        			byte[] receivedArray = data.getData();
+        			VideoFrame mVideoFrame = new VideoFrame(receivedArray);
+                	//toastUsingHandler("length of received Array: " + receivedArray.length, handler, getBaseContext());
+        			
+        			//check data of videoFrame
+                    //toastUsingHandler(mVideoFrame.getOne() + "  " + mVideoFrame.getTwo() + "  " + mVideoFrame.getThree() + "  " + mVideoFrame.getFour() + "  " + "id:" + mVideoFrame.getSourceId() + " " + "Length of image data: " + mVideoFrame.getImageData().length, handler, getBaseContext());
+        			
+                	byte[] imageArray = mVideoFrame.getImageData();
+                	
+                	// check if ID is sent properly
+                	final byte encodedImageId =  mVideoFrame.getSourceId();
 
-                        try {
-                        	DataInputStream in = new DataInputStream(client.getInputStream());
-	                        while (true) {
-	                        	final int callbackImageWidth = in.readInt();
-	                        	final int callbackImageHeight = in.readInt();
-	                        	final int imageArrayLength = in.readInt();
-	                        	byte[] imageArray = new byte[imageArrayLength];
-	                        	in.readFully(imageArray);
-	                        	final byte[] finalImageArray = imageArray;
-	                        	Log.d("ServerActivity", "imageArray Received!");                        	
-                            	
-	                        	//toasts to make sure the byte array is being sent correctly
-	                        	/*
-	                        	handler.post(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Toast.makeText(getBaseContext(), arrayDataToString(finalImageArray), Toast.LENGTH_SHORT).show();
-                                        Toast.makeText(getBaseContext(), "Width=" + callbackImageWidth + "Height=" + callbackImageHeight, Toast.LENGTH_SHORT).show();
-                                    }
-                                });*/                            	
-
-                            	// Convert the array of bytes stored as NV21 to a bitmap
-                            	incomingImage = getBitmapFromNV21(callbackImageWidth, callbackImageHeight, imageArray);
-                            	
-                            	// update the image!
-                            	handler.post(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        incomingImages.setImageBitmap(incomingImage);                                        
-                                    }
-                                }); 
-                            	
-                            }
-	                        //break;
-                            
-                        } catch (Exception e) {
-                            handler.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    serverStatus.setText("Oops. Connection interrupted. Please reconnect your phones.");
-                                }
-                            });
-                            e.printStackTrace();
-                        }
-                    }
-                } else {
-                    handler.post(new Runnable() {
+                	incomingImage = BitmapFactory.decodeByteArray(imageArray, 0, imageArray.length);
+                	
+                	// update the image!
+                	handler.post(new Runnable() {
                         @Override
                         public void run() {
-                            serverStatus.setText("Couldn't detect internet connection.");
+                        	// main image
+                        	if (encodedImageId == preferredStreamId) {
+                        		incomingImages.setImageBitmap(incomingImage);
+                        	}
+                            // grid images
+                    		mImageAdapter.addImage(encodedImageId, incomingImage); // OMG BYTE OMG OMGOMG
+                    		mImageAdapter.notifyDataSetChanged();
                         }
                     });
-                }
+        		}
+        		server.close();	
             } catch (Exception e) {
                 handler.post(new Runnable() {
                     @Override
@@ -221,7 +222,15 @@ public class ServerActivity extends Activity {
                     InetAddress inetAddress = enumIpAddr.nextElement();
 
                     //IPv4:
-                    if (!inetAddress.isLoopbackAddress()    && InetAddressUtils.isIPv4Address(inetAddress.getHostAddress())   ) { return inetAddress.getHostAddress().toString(); }
+                    if (!inetAddress.isLoopbackAddress()    && InetAddressUtils.isIPv4Address(inetAddress.getHostAddress())   ) {
+                    	String IPv4Address = inetAddress.getHostAddress().toString();
+                    	
+                    	String[] tokens = IPv4Address.split("\\.");
+                    	String lastElement = tokens[tokens.length-1];
+                    	Log.e("Server IP Address: ", lastElement);
+                    	//return inetAddress.getHostAddress().toString();
+                    	return IPv4Address;
+                    }
                     
                     //IPv6:
                     //if (!inetAddress.isLoopbackAddress()    && InetAddressUtils.isIPv4Address(ipv4 = inetAddress.getHostAddress())   ) { return inetAddress.getHostAddress().toString(); }
@@ -239,12 +248,12 @@ public class ServerActivity extends Activity {
     @Override
     protected void onStop() {
         super.onStop();
-        try {
+        /*try {
              // make sure you close the socket upon exiting
              serverSocket.close();
          } catch (IOException e) {
              e.printStackTrace();
-         }
+         }*/
     }
     
 
@@ -263,5 +272,16 @@ public class ServerActivity extends Activity {
 		byte[] imageBytes = out.toByteArray();
 		Bitmap image = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
 		return image;
+    }
+    
+    private void toastUsingHandler(String text, Handler handler, Context context) {
+    	final String textFinal = text; 
+    	final Context contextFinal = context;
+    	handler.post(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(contextFinal, textFinal, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

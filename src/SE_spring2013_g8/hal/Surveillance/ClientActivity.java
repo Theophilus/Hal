@@ -1,16 +1,25 @@
 package SE_spring2013_g8.hal.Surveillance;
 
-import java.io.DataOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.net.DatagramPacket;
 import java.net.InetAddress;
+import java.net.MulticastSocket;
+import java.net.NetworkInterface;
 import java.net.Socket;
+import java.net.SocketException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Enumeration;
+import java.util.List;
+
+import org.apache.http.conn.util.InetAddressUtils;
 
 import SE_spring2013_g8.hal.R;
 import android.app.Activity;
+import android.content.Context;
 import android.content.pm.ActivityInfo;
+import android.graphics.ImageFormat;
 import android.hardware.Camera;
 import android.hardware.Camera.PreviewCallback;
 import android.media.CamcorderProfile;
@@ -21,7 +30,6 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -38,10 +46,12 @@ import android.widget.Toast;
 
 public class ClientActivity extends Activity {
 
+    private Handler handler = new Handler();
+	
 	/**
 	 * EditText containing the IP address of the server (the receiving end of this video)
 	 */
-    private EditText serverIpEditText;
+    //private EditText serverIpEditText;
     
     /**
      * Button to connect this tablet with the tablet for receiving the streamed video
@@ -51,7 +61,7 @@ public class ClientActivity extends Activity {
     /**
      * String containing the IP address of the server.
      */
-    private String serverIpAddress = "";
+    //private String serverIpAddress = "";
     
     /**
      * boolean used to determine if the client is already connected to the server (to avoid trying to connect more than once)
@@ -114,16 +124,21 @@ public class ClientActivity extends Activity {
 	public static final int MEDIA_TYPE_VIDEO = 2;
 	String TAG = "MainActivity";
 	
+	Camera.Parameters mCameraParameters;
+	
+	FrameLayout preview;
+	
+	Thread cThread = new Thread(new ClientThread());
+	
 	/**
 	 * PreviewCallback of the video preview which returns a video frame
-	 */
-	
+	 */	
     PreviewCallback previewCallback = new PreviewCallback() {
         public void onPreviewFrame(byte[] data, Camera camera) {
         	callbackImage = data;
         }
-    };    
-	
+    };	
+    
     
     /**
      * Creates the activity for the client
@@ -135,15 +150,27 @@ public class ClientActivity extends Activity {
         setContentView(R.layout.surveillance_client_activity);        
         
         // Create our Preview view and set it as the content of our activity.
-        mCamera = openFrontFacingCameraGingerbread();	    
+        mCamera = openFrontFacingCameraGingerbread();	
+        
+        mCameraParameters = mCamera.getParameters();
+        
+		// image dimensions have been determined by the MTU over WLAN = 7981
+        int previewWidth = 320;
+        int previewHeight = 240;
+        
+        mCameraParameters.setPreviewSize(previewWidth,previewHeight);
+        
+        // check the available preview sizes
+        //logSupportedPreviewSizes(mCameraParameters);
+
+        mCameraParameters.setPreviewFormat(ImageFormat.NV21);
+        mCamera.setParameters(mCameraParameters);
         mPreview = new CameraPreview(this, mCamera, previewCallback);
-        FrameLayout preview = (FrameLayout) findViewById(R.id.camera_preview);
+        preview = (FrameLayout) findViewById(R.id.camera_preview);
         preview.addView(mPreview);
         
         // add listeners to the buttons of this activity 
-        serverIpEditText = (EditText) findViewById(R.id.server_ip);
-        addButtonListeners();        
-    
+        addButtonListeners();
     }
     
     /**
@@ -157,42 +184,35 @@ public class ClientActivity extends Activity {
 
         public void run() {
             try {
-                InetAddress serverAddr = InetAddress.getByName(serverIpAddress);
-                Log.d("ClientActivity", "C: Connecting...");
-                socket = new Socket(serverAddr, ServerActivity.SERVERPORT);
+            	int port = 1234;
+        		MulticastSocket mMulticastSocket = new MulticastSocket();
+        		InetAddress group = InetAddress.getByName("234.5.6.7");
                 connected = true;
                 
                 while (connected) {
                     try {
-                    	Thread.sleep(200);
+                    	Thread.sleep(50);
                     	Log.d("ClientActivity", "C: Sending command.");
-                    	DataOutputStream out = new DataOutputStream(socket.getOutputStream());
 
-                        final byte[] imageToSend = callbackImage;
-
-                        // Toast to see if the byte array containing the image is created properly
-                        /*handler.post(new Runnable() {
-                            @Override
-                            public void run() {
-                            	Toast.makeText(getBaseContext(), arrayDataToString(imageToSend), Toast.LENGTH_LONG).show();
-                            }
-                        });*/
-
-                        int callbackImageWidth =  mCamera.getParameters().getPreviewSize().width;
-                    	int callbackImageHeight =  mCamera.getParameters().getPreviewSize().height;
+                    	VideoFrame mVideoFrame = new VideoFrame();
                         
-                    	out.writeInt(callbackImageWidth);
-                    	out.writeInt(callbackImageHeight);
-                        out.writeInt(imageToSend.length);
-                        out.write(imageToSend);
+                    	//temporary ID for now // use LSB of IP address !
+                    	mVideoFrame.setSourceId(getTokenFromLocalIPAddress());
+                        mVideoFrame.setImageData(callbackImage);
+
+                        final byte[] imageToSend = mVideoFrame.getVideoFrameWithAddtnlInfo();
+                        Log.e("Size of the byte array sent: ", Integer.toString(imageToSend.length));
+
+                        //Load the image into the DatagramPacket
+                        DatagramPacket mDatagramPacket = new DatagramPacket(imageToSend, imageToSend.length, group, port);
+                        mMulticastSocket.send(mDatagramPacket);
                         
                         Log.i("ClientActivity", "C: Sent.");
                     } catch (Exception e) {
                         Log.e("ClientActivity", "S: Error", e);
                     }
                 }
-                
-                socket.close();
+                //socket.close();
                 Log.d("ClientActivity", "C: Closed.");
             } catch (Exception e) {
                 Log.e("ClientActivity", "C: Error", e);
@@ -200,17 +220,7 @@ public class ClientActivity extends Activity {
             }
         }
     }
-	
-    /*
-    private String arrayDataToString (byte[] byteArray) {
-    	String arrayData = "";
-    	arrayData = arrayData + "Array Length = " + byteArray.length;
-    	arrayData = arrayData + "  **  " + "First Element = " + byteArray[0];
-    	arrayData = arrayData + "  **  " + "Second Element = " + byteArray[1];
-    	arrayData = arrayData + "  **  " + "Last Element = " + byteArray[byteArray.length-1];
-    	return arrayData;
-    }*/
-    
+
     /**
      * Sets the text of the capture button to indicate the current status of capturing
      * 
@@ -240,7 +250,6 @@ public class ClientActivity extends Activity {
 	    mMediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
 
 	    // Step 3: Set a CamcorderProfile (requires API Level 8 or higher)
-	    //mMediaRecorder.setProfile(CamcorderProfile.get(CamcorderProfile.QUALITY_HIGH));
 	    mMediaRecorder.setProfile(CamcorderProfile.get(mCameraIndex, CamcorderProfile.QUALITY_LOW));
 
 	    // Step 4: Set output file stored as file
@@ -250,7 +259,7 @@ public class ClientActivity extends Activity {
 	    mMediaRecorder.setOutputFile(getOutputMediaFile(MEDIA_TYPE_VIDEO).toString());
 	    Toast.makeText(getBaseContext(), "File Output location:" + getOutputMediaFile(MEDIA_TYPE_VIDEO).toString(), Toast.LENGTH_LONG).show();
 	    
-	    //perhaps change this to a way that stores a different video format?
+	    //set the encoder for stored video
 	    //mMediaRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.H263);
 					        
 	    // Step 5: Set the preview output
@@ -359,9 +368,10 @@ public class ClientActivity extends Activity {
 	 */
     @Override
     protected void onPause() {
-        super.onPause();
-        releaseMediaRecorder();       // if you are using MediaRecorder, release it first
-        releaseCamera();              // release the camera immediately on pause event
+    	connected = false;
+    	super.onPause();        
+        //releaseMediaRecorder();       // if you are using MediaRecorder, release it first
+        //releaseCamera();              // release the camera immediately on pause event
     }
 
     /**
@@ -429,14 +439,70 @@ public class ClientActivity extends Activity {
 		        @Override
 		        public void onClick(View v) {
 		            if (!connected) {		            	
-		            	serverIpAddress = serverIpEditText.getText().toString();
-		            	if (!serverIpAddress.equals("")) {
-		                    Thread cThread = new Thread(new ClientThread());
+		            	//serverIpAddress = serverIpEditText.getText().toString();
+		            	//if (!serverIpAddress.equals("")) {
+		                    //Thread cThread = new Thread(new ClientThread());
 		                    cThread.start();
-		                }
+		                //}
 		            }
 		        }
 		    }
 		);
+    }
+    
+    /*
+    private void toastUsingHandler(String text, Handler handler, Context context) {
+    	final String textFinal = text; 
+    	final Context contextFinal = context;
+    	handler.post(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(contextFinal, textFinal, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    
+    private String byteArrayToString(byte[] array) {
+    	String mString = "";
+    	for (int i=0; i<array.length; i++) {
+    		mString = mString + array[i] + " ";
+    	}
+    	return mString;
+    }
+    */
+    
+    private byte getTokenFromLocalIPAddress() {
+        try {
+            for (Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements();) {
+                NetworkInterface intf = en.nextElement();
+                for (Enumeration<InetAddress> enumIpAddr = intf.getInetAddresses(); enumIpAddr.hasMoreElements();) {
+                    InetAddress inetAddress = enumIpAddr.nextElement();
+
+                    //IPv4:
+                    if (!inetAddress.isLoopbackAddress()    && InetAddressUtils.isIPv4Address(inetAddress.getHostAddress())   ) {
+                    	String IPv4Address = inetAddress.getHostAddress().toString();
+                    	
+                    	String[] tokens = IPv4Address.split("\\.");
+                    	String lastElementString = tokens[tokens.length-1];
+                    	byte lastElementByte = Byte.valueOf(lastElementString);
+                    	Log.e("Client token: ", Byte.toString(lastElementByte));
+                    	return lastElementByte;
+                    }
+                    
+                    //IPv6:
+                    //if (!inetAddress.isLoopbackAddress()    && InetAddressUtils.isIPv4Address(ipv4 = inetAddress.getHostAddress())   ) { return inetAddress.getHostAddress().toString(); }
+                }
+            }
+        } catch (SocketException ex) {
+            Log.e("ServerActivity", ex.toString());
+        }
+        return 0;
+    }
+    
+    private void logSupportedPreviewSizes (Camera.Parameters mCameraParameters) {
+    	List<Camera.Size> mCameraSizes = mCameraParameters.getSupportedPreviewSizes();
+    	for (Camera.Size mCameraSize : mCameraSizes) {
+    		Log.e("Available Camera Size: ", mCameraSize.width + "x" + mCameraSize.height);
+    	}
     }
 }

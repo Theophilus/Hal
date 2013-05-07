@@ -28,4 +28,15 @@
 		android:id="@+id/incoming_images"
 		android:layout_width="500dp"
         android:layout_height="300dp" />
+    <GridView 
+	    android:id="@+id/gridview"
+	    android:layout_width="fill_parent" 
+	    android:layout_height="fill_parent"
+	    android:columnWidth="192dp"
+	    android:numColumns="auto_fit"
+	    android:verticalSpacing="10dp"
+	    android:horizontalSpacing="10dp"
+	    android:stretchMode="none"
+	    android:gravity="fill"
+	/>
 </LinearLayout>

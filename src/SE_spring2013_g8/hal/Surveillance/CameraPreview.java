@@ -71,7 +71,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
             Log.d(TAG, "Error setting camera preview: " + e.getMessage());
         }
         
-        Toast.makeText(getContext(), "surface created", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getContext(), "surface created", Toast.LENGTH_SHORT).show();
     }
 
     /**
