@@ -57,6 +57,10 @@ public class LightControl extends Activity {
 	 */
 	String lightNum;
 	/**
+	 * String to hold the blinds id
+	 */
+	String blindNum;
+	/**
 	 * holds the message received by the server
 	 */
 	static TextView txtMessagesReceived;
@@ -201,6 +205,24 @@ public class LightControl extends Activity {
 
 		});
 		
+		Spinner blinds = (Spinner) findViewById(R.id.Blinds_list);
+		ArrayAdapter<CharSequence> adapterb = ArrayAdapter.createFromResource(this, R.array.Blinds_list, android.R.layout.simple_spinner_item);
+		adapterb.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		blinds.setAdapter(adapterb);
+		blinds.setOnItemSelectedListener(new OnItemSelectedListener() {
+		    @Override
+		    public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+		        blindNum = Integer.toString(position);
+		    }
+
+		    @Override
+		    public void onNothingSelected(AdapterView<?> parentView) {
+		        blindNum = null;
+		    }
+
+		});
+		
+		
 		File find = getBaseContext().getFileStreamPath(getString(R.string.ip_file_name));
 		if(!find.exists()){
 			SavedIP = new File(this.getFilesDir(), getString(R.string.ip_file_name));
@@ -246,6 +268,62 @@ public class LightControl extends Activity {
 	public void onClickSendOff(View view) {
 		if (ipAddress != null) {
 			sendToServer("Light_off" + " " + lightNum);
+		}
+		else {
+			Toast prName = Toast.makeText(this,R.string.no_ip_error,Toast.LENGTH_LONG);
+			prName.setGravity(0,0,0);
+			prName.show();
+		}
+	}
+	
+	/**
+	 * method used to open the blind selected
+	 */
+	public void openBlind(View view){
+		if (ipAddress != null) {
+			sendToServer("Blind_open" + " " + blindNum);
+		}
+		else {
+			Toast prName = Toast.makeText(this,R.string.no_ip_error,Toast.LENGTH_LONG);
+			prName.setGravity(0,0,0);
+			prName.show();
+		}
+	}
+	
+	/**
+	 * method used to close the blind selected
+	 */
+	public void closeBlind(View view){
+		if (ipAddress != null) {
+			sendToServer("Blind_close" + " " + blindNum);
+		}
+		else {
+			Toast prName = Toast.makeText(this,R.string.no_ip_error,Toast.LENGTH_LONG);
+			prName.setGravity(0,0,0);
+			prName.show();
+		}
+	}
+	
+	/**
+	 * method used to toggle the lights on and off
+	 */
+	public void LightsT(View view){
+		if (ipAddress != null) {
+			sendToServer("ToggleLights" + " " + 0);
+		}
+		else {
+			Toast prName = Toast.makeText(this,R.string.no_ip_error,Toast.LENGTH_LONG);
+			prName.setGravity(0,0,0);
+			prName.show();
+		}
+	}
+	
+	/**
+	 * method used to toggle the blinds on and off
+	 */
+	public void BlindsT(View view){
+		if (ipAddress != null) {
+			sendToServer("ToggleBlinds" + " " + 0);
 		}
 		else {
 			Toast prName = Toast.makeText(this,R.string.no_ip_error,Toast.LENGTH_LONG);

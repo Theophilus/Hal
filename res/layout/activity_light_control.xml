@@ -58,4 +58,44 @@
         android:text="@string/set_ip"
         android:onClick="set_ip" />
     
+    <Button 
+        android:id="@+id/Blindopen"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Lights_list"
+        android:text="@string/Blind_open"
+        android:onClick="openBlind"/>
+    
+    <Button 
+        android:id="@+id/Blindclose"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/Lights_list"
+        android:text="@string/Blind_close"
+        android:onClick="closeBlind"/>
+    
+    <Spinner
+        android:id="@+id/Blinds_list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Blindopen" />
+    
+    <Button 
+        android:id="@+id/LightsOnOff"
+        android:layout_width="145dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Blinds_list"
+        android:text="@string/LightsToggle"
+        android:onClick="LightsT"/>
+    
+    <Button 
+        android:id="@+id/BlindsOnOff"
+        android:layout_width="149dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Blinds_list"
+        android:layout_alignParentRight="true"
+        android:text="@string/BlindsToggle"
+        android:onClick="BlindsT"/>
+    
 </RelativeLayout>
