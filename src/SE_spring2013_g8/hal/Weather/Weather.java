@@ -89,7 +89,7 @@ public class Weather extends Activity {
             String currentWeatherDescription = currentCondition.getJSONObject(0).getJSONArray("weatherDesc").getJSONObject(0).getString("value");
             String currentTemperature = currentCondition.getJSONObject(0).getString("temp_F");
                         
-            String currentWeather = currentTemperature + " F° ";
+            String currentWeather = currentTemperature + " F ";
             currentWeather += currentWeatherDescription;
             
             JSONArray weatherForecast = data.getJSONArray("weather");    
@@ -118,7 +118,7 @@ public class Weather extends Activity {
     	String date = day.getString("date");
     	String high = day.getString("tempMaxF");
     	String low = day.getString("tempMinF");
-    	result = date + ": Hi " + high + "F° - " + "Lo " + low + "F°";
+    	result = date + ": Hi " + high + "F - " + "Lo " + low + "F";
     	return result;
 	}
 
