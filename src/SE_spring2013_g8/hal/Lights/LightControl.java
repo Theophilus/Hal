@@ -1,12 +1,19 @@
 package SE_spring2013_g8.hal.Lights;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
 import SE_spring2013_g8.hal.R;
 import android.app.Activity;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -67,6 +74,8 @@ public class LightControl extends Activity {
 	static Handler UIupdater = new Handler() {
 	};
 	
+	File SavedIP;
+	
 	/**
 	 * CreateCommThreadTask class
 	 * 
@@ -75,6 +84,7 @@ public class LightControl extends Activity {
 	 * @author Mike
 	 *
 	 */
+	
 	private class CreateCommThreadTask extends AsyncTask
 	<Void, Integer, Void> {
 		@Override
@@ -159,6 +169,14 @@ public class LightControl extends Activity {
 		Toast prName = Toast.makeText(this,R.string.confirm_ip,Toast.LENGTH_LONG);
 		prName.setGravity(0,0,0);
 		prName.show();
+		FileOutputStream outputStream;
+		try{
+			outputStream = openFileOutput(getString(R.string.ip_file_name), Context.MODE_PRIVATE);
+			outputStream.write(ipAddress.getBytes());
+			outputStream.close();
+		} catch(Exception e){
+		
+		}
 	}
 	
 	/** Called when the activity is first created. */
@@ -182,6 +200,29 @@ public class LightControl extends Activity {
 		    }
 
 		});
+		
+		File find = getBaseContext().getFileStreamPath(getString(R.string.ip_file_name));
+		if(!find.exists()){
+			SavedIP = new File(this.getFilesDir(), getString(R.string.ip_file_name));
+		}
+		else {
+			SavedIP = find;
+			try {
+				FileInputStream fis = openFileInput(getString(R.string.ip_file_name));
+				InputStreamReader inReader = new InputStreamReader(fis);
+				BufferedReader bufReader = new BufferedReader(inReader);
+				StringBuilder sb = new StringBuilder();
+				String line;
+				while((line = bufReader.readLine()) != null){
+					sb.append(line);
+				}
+				ipAddress = sb.toString();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	/**
 	 * sends message to turn the light on to the server when the button is clicked
