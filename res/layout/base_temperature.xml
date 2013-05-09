@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:paddingTop="10dip"
+    android:background= "@drawable/night" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="824dp"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingRight="20dip" >
+
+                <TextView
+                    android:id="@+id/nightView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dip"
+                    android:text="Night" />
+
+                <Button
+                    android:id="@+id/nightInc"
+                    android:layout_width="70dip"
+                    android:layout_height="wrap_content"
+                    android:text="+" />
+
+                <TextView
+                    android:id="@+id/nightViewTemp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dip"
+                    android:text="25.0"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <Button
+                    android:id="@+id/nightDec"
+                    android:layout_width="70dip"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dip"
+                    android:text="-" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingLeft="20dip" >
+
+                <TextView
+                    android:id="@+id/dayView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dip"
+                    android:text="Day" />
+
+                <Button
+                    android:id="@+id/dayInc"
+                    android:layout_width="70dip"
+                    android:layout_height="wrap_content"
+                    android:text="+" />
+
+                <TextView
+                    android:id="@+id/dayViewTemp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dip"
+                    android:text="25.0"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <Button
+                    android:id="@+id/dayDec"
+                    android:layout_width="70dip"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dip"
+                    android:text="-" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/buttonSave"
+            android:layout_width="105dp"
+            android:layout_height="wrap_content"
+            android:text="Save" />
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/thermometer" />
+
+    </LinearLayout>
+
+</LinearLayout>

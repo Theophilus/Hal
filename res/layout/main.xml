@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical" 
+    android:background= "@drawable/bg">
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dip" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/buttonMon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mon" />
+
+            <Button
+                android:id="@+id/buttonTue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tue" />
+
+            <Button
+                android:id="@+id/buttonWed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wed" />
+
+            <Button
+                android:id="@+id/buttonThi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thi" />
+
+            <Button
+                android:id="@+id/buttonFri"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fri" />
+
+            <Button
+                android:id="@+id/buttonSat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sat" />
+
+            <Button
+                android:id="@+id/buttonSun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sun" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center|fill_horizontal" >
+
+                <ImageView
+                    android:id="@+id/imageWeather"
+                    android:layout_width="165dp"
+                    android:layout_height="135dp"
+                    android:src="@drawable/sun" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center|center_vertical"
+                    android:orientation="vertical" >
+
+                    <Button
+                        android:id="@+id/buttonInc"
+                        android:layout_width="70dip"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dip"
+                        android:text="+" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/TextViewTemp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dip"
+                            android:text="25.0"
+                            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                        <TextView
+                            android:id="@+id/textViewGrad"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dip"
+                            android:text=" °C"
+                            android:textAppearance="?android:attr/textAppearanceLarge" />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/buttonDec"
+                        android:layout_width="70dip"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dip"
+                        android:text="-" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <SeekBar
+            android:id="@+id/seekBarTemp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dip"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:max="25" />
+
+        <Button
+            android:id="@+id/buttonSend"
+            android:layout_width="fill_parent"
+            android:layout_height="75dip"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:text="Send"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center" >
+
+        <Button
+            android:id="@+id/buttonSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Temperature" />
+
+        <ToggleButton
+            android:id="@+id/toggleVocation"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="ToggleButton"
+            android:textOff="Vacation mode"
+            android:textOn="Vacation mode" />
+    </LinearLayout>
+
+</LinearLayout>
