@@ -118,7 +118,7 @@ public class BroadcastView extends Activity {
 	                DatagramPacket packet;
 
 	               // final InetAddress destination = InetAddress.getByName("192.168.0.105"); home IP
-	                final InetAddress destination = InetAddress.getByName("173.31.54.216"); // rutgers IP
+	                final InetAddress destination = InetAddress.getByName("192.168.1.3"); // rutgers IP
 	                Log.d("VS", "Address retrieved");
 
 
@@ -136,7 +136,7 @@ public class BroadcastView extends Activity {
 	                    //putting buffer in the packet
 	                    packet = new DatagramPacket (buffer,buffer.length,destination,port);
 	                    socket.send(packet);
-
+	                    Log.e("VS", "Recording");
 	                }
 
 	            } catch(UnknownHostException e) {

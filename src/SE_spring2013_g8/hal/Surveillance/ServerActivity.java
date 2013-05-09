@@ -85,9 +85,11 @@ public class ServerActivity extends Activity {
      */
     Bitmap incomingImage;
     
-	final ImageAdapter mImageAdapter = new ImageAdapter(this);
+	final ImageAdapter mImageAdapter = new ImageAdapter(this, this);
 	
-	int preferredStreamId = 0;
+	
+	int defaultPreferredStreamId = 0; 
+	int preferredStreamId = defaultPreferredStreamId;
 
 	/**
 	 * Creates the main activity of the surveillance module
@@ -114,7 +116,6 @@ public class ServerActivity extends Activity {
 	    gridview.setOnItemClickListener(new OnItemClickListener() {
 	        public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 	        	int streamId = mImageAdapter.getIdByPosition(position);
-	            Toast.makeText(getBaseContext(), "ID of stream: " + streamId, Toast.LENGTH_SHORT).show();
 	            preferredStreamId = streamId;
 	        }
 	    });
@@ -151,19 +152,20 @@ public class ServerActivity extends Activity {
                         @Override
                         public void run() {
                             serverStatus.setText("Connected.");
+                            
+                            // check if the grid is empty
+                    		if (mImageAdapter.getCount() == 0) {
+                    			// use the default "no streams" image if there are no preferred images to show
+                    			displayNoStreamsImage();
+                        	}
                         }
                     });
         			
-        			byte buf[] = new byte[6000];
+        			byte buf[] = new byte[7000];
         			DatagramPacket data = new DatagramPacket(buf, buf.length);
         			server.receive(data);
         			byte[] receivedArray = data.getData();
         			VideoFrame mVideoFrame = new VideoFrame(receivedArray);
-                	//toastUsingHandler("length of received Array: " + receivedArray.length, handler, getBaseContext());
-        			
-        			//check data of videoFrame
-                    //toastUsingHandler(mVideoFrame.getOne() + "  " + mVideoFrame.getTwo() + "  " + mVideoFrame.getThree() + "  " + mVideoFrame.getFour() + "  " + "id:" + mVideoFrame.getSourceId() + " " + "Length of image data: " + mVideoFrame.getImageData().length, handler, getBaseContext());
-        			
                 	byte[] imageArray = mVideoFrame.getImageData();
                 	
                 	// check if ID is sent properly
@@ -175,11 +177,20 @@ public class ServerActivity extends Activity {
                 	handler.post(new Runnable() {
                         @Override
                         public void run() {
-                        	// main image
+                        	// update the main image if the incoming image is the preferred image
                         	if (encodedImageId == preferredStreamId) {
                         		incomingImages.setImageBitmap(incomingImage);
                         	}
-                            // grid images
+                        	
+                        	// if the preferred image does not exist
+                        	if (!mImageAdapter.imageExists(preferredStreamId)) {
+                        		// if the grid is not empty a new preferred stream can be selected
+                        		if (mImageAdapter.getCount() > 0) {
+                        			preferredStreamId = mImageAdapter.getIdByPosition(mImageAdapter.getCount()-1);
+                        		}
+                        	}
+
+                        	// grid images
                     		mImageAdapter.addImage(encodedImageId, incomingImage); // OMG BYTE OMG OMGOMG
                     		mImageAdapter.notifyDataSetChanged();
                         }
@@ -197,17 +208,6 @@ public class ServerActivity extends Activity {
             }
         }
     }
-    
-    /*
-    private String arrayDataToString (byte[] byteArray) {
-    	String arrayData = "";
-    	arrayData = arrayData + "Array Length = " + byteArray.length;
-    	arrayData = arrayData + "  **  " + "First Element = " + byteArray[0];
-    	arrayData = arrayData + "  **  " + "Second Element = " + byteArray[1];
-    	arrayData = arrayData + "  **  " + "Last Element = " + byteArray[byteArray.length-1];
-    	return arrayData;
-    }
-    */
     
     /**
      * get's the local IP address of the current android device
@@ -265,6 +265,11 @@ public class ServerActivity extends Activity {
      * @param imageArray byte array containing the image
      * @return Bitmap the generated bitmap
      */
+    
+    public void displayNoStreamsImage() {
+		incomingImages.setImageResource(R.drawable.surveillance_no_streams);
+    }
+    
     private Bitmap getBitmapFromNV21 (int callbackImageWidth, int callbackImageHeight, byte[] imageArray) {
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
 		YuvImage yuvImage = new YuvImage(imageArray, ImageFormat.NV21, callbackImageWidth, callbackImageHeight, null);

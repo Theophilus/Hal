@@ -9,7 +9,7 @@ public class MyReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-    	/*
+    	
     	String action = intent.getAction();
 
         if(action.equals(Intent.ACTION_POWER_CONNECTED)) {
@@ -28,6 +28,6 @@ public class MyReceiver extends BroadcastReceiver {
         	i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); 
         	context.startActivity(i);
         }
-        */
+        
     }
 }

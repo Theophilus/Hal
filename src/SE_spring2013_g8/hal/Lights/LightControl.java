@@ -1,12 +1,19 @@
 package SE_spring2013_g8.hal.Lights;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
 import SE_spring2013_g8.hal.R;
 import android.app.Activity;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -50,6 +57,10 @@ public class LightControl extends Activity {
 	 */
 	String lightNum;
 	/**
+	 * String to hold the blinds id
+	 */
+	String blindNum;
+	/**
 	 * holds the message received by the server
 	 */
 	static TextView txtMessagesReceived;
@@ -67,6 +78,8 @@ public class LightControl extends Activity {
 	static Handler UIupdater = new Handler() {
 	};
 	
+	File SavedIP;
+	
 	/**
 	 * CreateCommThreadTask class
 	 * 
@@ -75,6 +88,7 @@ public class LightControl extends Activity {
 	 * @author Mike
 	 *
 	 */
+	
 	private class CreateCommThreadTask extends AsyncTask
 	<Void, Integer, Void> {
 		@Override
@@ -159,6 +173,14 @@ public class LightControl extends Activity {
 		Toast prName = Toast.makeText(this,R.string.confirm_ip,Toast.LENGTH_LONG);
 		prName.setGravity(0,0,0);
 		prName.show();
+		FileOutputStream outputStream;
+		try{
+			outputStream = openFileOutput(getString(R.string.ip_file_name), Context.MODE_PRIVATE);
+			outputStream.write(ipAddress.getBytes());
+			outputStream.close();
+		} catch(Exception e){
+		
+		}
 	}
 	
 	/** Called when the activity is first created. */
@@ -182,6 +204,47 @@ public class LightControl extends Activity {
 		    }
 
 		});
+		
+		Spinner blinds = (Spinner) findViewById(R.id.Blinds_list);
+		ArrayAdapter<CharSequence> adapterb = ArrayAdapter.createFromResource(this, R.array.Blinds_list, android.R.layout.simple_spinner_item);
+		adapterb.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		blinds.setAdapter(adapterb);
+		blinds.setOnItemSelectedListener(new OnItemSelectedListener() {
+		    @Override
+		    public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+		        blindNum = Integer.toString(position);
+		    }
+
+		    @Override
+		    public void onNothingSelected(AdapterView<?> parentView) {
+		        blindNum = null;
+		    }
+
+		});
+		
+		
+		File find = getBaseContext().getFileStreamPath(getString(R.string.ip_file_name));
+		if(!find.exists()){
+			SavedIP = new File(this.getFilesDir(), getString(R.string.ip_file_name));
+		}
+		else {
+			SavedIP = find;
+			try {
+				FileInputStream fis = openFileInput(getString(R.string.ip_file_name));
+				InputStreamReader inReader = new InputStreamReader(fis);
+				BufferedReader bufReader = new BufferedReader(inReader);
+				StringBuilder sb = new StringBuilder();
+				String line;
+				while((line = bufReader.readLine()) != null){
+					sb.append(line);
+				}
+				ipAddress = sb.toString();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	/**
 	 * sends message to turn the light on to the server when the button is clicked
@@ -205,6 +268,62 @@ public class LightControl extends Activity {
 	public void onClickSendOff(View view) {
 		if (ipAddress != null) {
 			sendToServer("Light_off" + " " + lightNum);
+		}
+		else {
+			Toast prName = Toast.makeText(this,R.string.no_ip_error,Toast.LENGTH_LONG);
+			prName.setGravity(0,0,0);
+			prName.show();
+		}
+	}
+	
+	/**
+	 * method used to open the blind selected
+	 */
+	public void openBlind(View view){
+		if (ipAddress != null) {
+			sendToServer("Blind_open" + " " + blindNum);
+		}
+		else {
+			Toast prName = Toast.makeText(this,R.string.no_ip_error,Toast.LENGTH_LONG);
+			prName.setGravity(0,0,0);
+			prName.show();
+		}
+	}
+	
+	/**
+	 * method used to close the blind selected
+	 */
+	public void closeBlind(View view){
+		if (ipAddress != null) {
+			sendToServer("Blind_close" + " " + blindNum);
+		}
+		else {
+			Toast prName = Toast.makeText(this,R.string.no_ip_error,Toast.LENGTH_LONG);
+			prName.setGravity(0,0,0);
+			prName.show();
+		}
+	}
+	
+	/**
+	 * method used to toggle the lights on and off
+	 */
+	public void LightsT(View view){
+		if (ipAddress != null) {
+			sendToServer("ToggleLights" + " " + 0);
+		}
+		else {
+			Toast prName = Toast.makeText(this,R.string.no_ip_error,Toast.LENGTH_LONG);
+			prName.setGravity(0,0,0);
+			prName.show();
+		}
+	}
+	
+	/**
+	 * method used to toggle the blinds on and off
+	 */
+	public void BlindsT(View view){
+		if (ipAddress != null) {
+			sendToServer("ToggleBlinds" + " " + 0);
 		}
 		else {
 			Toast prName = Toast.makeText(this,R.string.no_ip_error,Toast.LENGTH_LONG);

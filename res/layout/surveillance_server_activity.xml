@@ -27,7 +27,8 @@
     <ImageView
 		android:id="@+id/incoming_images"
 		android:layout_width="500dp"
-        android:layout_height="300dp" />
+        android:layout_height="300dp"
+        android:layout_gravity="center_vertical" />
     <GridView 
 	    android:id="@+id/gridview"
 	    android:layout_width="fill_parent" 

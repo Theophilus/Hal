@@ -9,7 +9,7 @@ import java.net.UnknownHostException;
 
 import lash.halapp.ViewDevActivity;
 import SE_spring2013_g8.hal.R;
-import SE_spring2013_g8.hal.Climate.ClimateControl;
+import SE_spring2013_g8.hal.Climate.ThermostatActivity;
 import SE_spring2013_g8.hal.Intercom.HomeView;
 import SE_spring2013_g8.hal.Lights.LightControl;
 import SE_spring2013_g8.hal.Surveillance.SurveillanceMainActivity;
@@ -68,7 +68,9 @@ public class MainActivity extends Activity {
 
 	    GridView gridview = (GridView) findViewById(R.id.gridview);
 	    gridview.setAdapter(new ImageAdapter(this));
+	    
 	    startVoiceReceiver();
+	    
 	    gridview.setOnItemClickListener(new OnItemClickListener() {
 	        public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 	            //Toast.makeText(MainActivity.this, "" + position, Toast.LENGTH_SHORT).show();
@@ -89,7 +91,7 @@ public class MainActivity extends Activity {
 	            	startActivity(intent);
 	            }
 	            if (position == 0) {
-	            	Intent intent = new Intent(MainActivity.this, ClimateControl.class);
+	            	Intent intent = new Intent(MainActivity.this, ThermostatActivity.class);
 	            	startActivity(intent);
 	            }
 	            if (position == 3) {
@@ -137,7 +139,7 @@ public class MainActivity extends Activity {
 	                Log.d("VR", "Socket Created");
 
 	                int buff= AudioTrack.getMinBufferSize(sampleRate, channelConfig, audioFormat);
-	                byte[] buffer = new byte[256];
+	                byte[] buffer = new byte[buff];
 
 
 	                //minimum buffer size. need to be careful. might cause problems. try setting manually if any problems faced
