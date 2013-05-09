@@ -9,6 +9,12 @@
     <string name="Blind_open">Open</string>
     <string name="Blind_close">Close</string>
     <string name="Light_control_title">Light Control</string>
+    <string name="AddLight">Add Light</string>
+    <string name="RemoveLight">Remove Light</string>
+    <string name="AddBlind">Add Blind</string>
+    <string name="RemoveBlind">Remove Blind</string>
+    <string name="ItemName">Enter the item name</string>
+    <string name="ItemID">Enter the item ID(1&#8211;8)</string>
     <string name="Light_on">On</string>
     <string name="Light_off">Off</string>
     <string name="LightsToggle">Turn Lights Off</string>
@@ -53,8 +59,6 @@
     <string-array name="Lights_list">
     </string-array>
     <string-array name="Blinds_list">
-        <item>Blind1</item>
-        <item>Blind2</item>
     </string-array>
 
     <string name="title_activity_light_manage">Add/Remove Lights or Blinds</string>

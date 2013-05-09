@@ -2,15 +2,62 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".LightManage" >
-
-    <TextView
-        android:layout_width="wrap_content"
+ 
+    <EditText
+        android:id="@+id/editname"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:hint="@string/ItemName"
+        android:layout_alignParentLeft="true" 
+        android:layout_alignParentTop="true" />
+    
+    <EditText
+        android:id="@+id/editid"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/ItemID"
+        android:layout_alignParentLeft="true" 
+        android:layout_below="@id/editname"/>
+    
+    <Button
+        android:id="@+id/Add_Light"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:text="@string/AddLight"
+        android:onClick="addLight" 
+        android:layout_below="@id/editid" 
+        android:layout_alignParentLeft="true" />
 
+    <Button
+        android:id="@+id/Rem_Light"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:text="@string/RemoveLight"
+        android:onClick="removeLight" 
+        android:layout_below="@id/editid" 
+        android:layout_alignParentRight="true" />
+    
+    <Button
+        android:id="@+id/Add_Blind"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:text="@string/AddBlind"
+        android:onClick="addBlind" 
+        android:layout_below="@id/Add_Light" 
+        android:layout_alignParentLeft="true" />
+    
+    <Button
+        android:id="@+id/Rem_Blind"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:text="@string/RemoveBlind"
+        android:onClick="removeBlind" 
+        android:layout_below="@id/Rem_Light" 
+        android:layout_alignParentRight="true" />
 </RelativeLayout>
