@@ -60,8 +60,10 @@ public final class R {
         public static final int night=0x7f020013;
         public static final int sun=0x7f020014;
         public static final int sun1=0x7f020015;
-        public static final int surveillanceicon=0x7f020016;
-        public static final int thermometer=0x7f020017;
+        public static final int surveillance_no_streams=0x7f020016;
+        public static final int surveillance_notify=0x7f020017;
+        public static final int surveillanceicon=0x7f020018;
+        public static final int thermometer=0x7f020019;
     }
     public static final class id {
         public static final int Blindclose=0x7f0b000b;
@@ -73,17 +75,17 @@ public final class R {
         public static final int Lights_list=0x7f0b0007;
         public static final int LinearLayout1=0x7f0b000f;
         public static final int LinearLayout2=0x7f0b0030;
-        public static final int ListView01=0x7f0b0065;
-        public static final int ScrollView01=0x7f0b0066;
+        public static final int ListView01=0x7f0b0064;
+        public static final int ScrollView01=0x7f0b0065;
         public static final int TextViewTemp=0x7f0b0050;
-        public static final int action_settings=0x7f0b0067;
+        public static final int action_settings=0x7f0b0066;
         public static final int addLight=0x7f0b0006;
         public static final int adjustscreenbrightness=0x7f0b0000;
         public static final int appsListView=0x7f0b0018;
         public static final int backlightcontrol=0x7f0b0001;
         public static final int backlightsetting=0x7f0b0002;
         public static final int broadcastTimer=0x7f0b002f;
-        public static final int btnJSON=0x7f0b0064;
+        public static final int btnJSON=0x7f0b0063;
         public static final int button1=0x7f0b0019;
         public static final int button2=0x7f0b0021;
         public static final int button3=0x7f0b0022;
@@ -102,10 +104,8 @@ public final class R {
         public static final int buttonThi=0x7f0b004a;
         public static final int buttonTue=0x7f0b0048;
         public static final int buttonWed=0x7f0b0049;
-        public static final int button_capture=0x7f0b0060;
-        public static final int camera_preview=0x7f0b005f;
+        public static final int camera_preview=0x7f0b005e;
         public static final int chronometer1=0x7f0b0035;
-        public static final int connect_phones=0x7f0b005e;
         public static final int dayDec=0x7f0b002b;
         public static final int dayInc=0x7f0b0029;
         public static final int dayView=0x7f0b0028;
@@ -118,8 +118,8 @@ public final class R {
         public static final int horizontalScrollView1=0x7f0b0046;
         public static final int imageView1=0x7f0b002d;
         public static final int imageWeather=0x7f0b004e;
-        public static final int incoming_images=0x7f0b0063;
-        public static final int incoming_messages=0x7f0b0062;
+        public static final int incoming_images=0x7f0b0062;
+        public static final int incoming_messages=0x7f0b0061;
         public static final int intercom_announcement_image=0x7f0b002e;
         public static final int intercom_broadcast=0x7f0b003d;
         public static final int intercom_broadcast_startbutton=0x7f0b0031;
@@ -159,9 +159,10 @@ public final class R {
         public static final int rowTime=0x7f0b005a;
         public static final int seekBar1=0x7f0b003a;
         public static final int seekBarTemp=0x7f0b0053;
-        public static final int server_status=0x7f0b0061;
+        public static final int server_status=0x7f0b0060;
         public static final int setHomeButton=0x7f0b0016;
         public static final int setIp=0x7f0b0009;
+        public static final int surveillance_notify=0x7f0b005f;
         public static final int textView2=0x7f0b001f;
         public static final int textViewGrad=0x7f0b0051;
         public static final int textViewNoSchedul=0x7f0b0059;
