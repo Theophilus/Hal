@@ -5,6 +5,7 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world"></string>
     <string name="title_activity_light_control">LightControl</string>
+    <string name="addrem">Add/Remove An Item</string>
     <string name="Blind_open">Open</string>
     <string name="Blind_close">Close</string>
     <string name="Light_control_title">Light Control</string>
@@ -33,7 +34,6 @@
     <string name="no_ip_error">No IP Address Set!</string>
     <string name="confirm_ip">IP Address Set!</string>
     <string name="ip_file_name">ipfile</string>
-
     <string name="settings">Settings</string>
     <string name="homeLoc">Home Coordinates:</string>
     <string name="latTV">Latitude:</string>
@@ -41,24 +41,22 @@
     <string name="setHome">Set Home</string>
     <string name="curLoc">Get Current Location</string>
     <string name="settTitle">Settings</string>
-    
-    <!--  example apps -->
+
+    <!-- example apps -->
     <string-array name="apps">
-        <item >blinds</item>
-        <item >lights</item>
-        <item >door</item>
-        <item >coffe maker</item>
-        <item >heater</item>
+        <item>blinds</item>
+        <item>lights</item>
+        <item>door</item>
+        <item>coffe maker</item>
+        <item>heater</item>
     </string-array>
-    
     <string-array name="Lights_list">
-        <item>Light1</item>
-        <item>Light2</item>
     </string-array>
-    
     <string-array name="Blinds_list">
-    	<item>Blind1</item>
-    	<item>Blind2</item>
+        <item>Blind1</item>
+        <item>Blind2</item>
     </string-array>
+
+    <string name="title_activity_light_manage">Add/Remove Lights or Blinds</string>
 
 </resources>

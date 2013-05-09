@@ -98,4 +98,13 @@
         android:text="@string/BlindsToggle"
         android:onClick="BlindsT"/>
     
+    <Button 
+        android:id="@+id/manage"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/BlindsOnOff"
+        android:layout_alignParentRight="true"
+        android:text="@string/addrem"
+        android:onClick="AddRemove"/>
+    
 </RelativeLayout>

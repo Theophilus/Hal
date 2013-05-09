@@ -14,6 +14,7 @@ import java.net.UnknownHostException;
 import SE_spring2013_g8.hal.R;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -77,6 +78,10 @@ public class LightControl extends Activity {
 	 */
 	static Handler UIupdater = new Handler() {
 	};
+	/**
+	 * spinner handler for lights
+	 */
+	ArrayAdapter<String> ladapter;
 	
 	File SavedIP;
 	
@@ -189,15 +194,14 @@ public class LightControl extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_light_control);
 		Spinner spinner = (Spinner) findViewById(R.id.Lights_list);
-		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.Lights_list, android.R.layout.simple_spinner_item);
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		spinner.setAdapter(adapter);
+		ladapter = new ArrayAdapter<String>(this, R.array.Lights_list, android.R.layout.simple_spinner_item);
+		ladapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		spinner.setAdapter(ladapter);
 		spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
 		    @Override
 		    public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
 		        lightNum = Integer.toString(position);
 		    }
-
 		    @Override
 		    public void onNothingSelected(AdapterView<?> parentView) {
 		        lightNum = null;
@@ -330,6 +334,14 @@ public class LightControl extends Activity {
 			prName.setGravity(0,0,0);
 			prName.show();
 		}
+	}
+	
+	/**
+	 * method to bring user to edit screen
+	 */
+	public void AddRemove(View view){
+		Intent intent = new Intent(this, LightManage.class);
+    	startActivity(intent);
 	}
 	
 	/**
