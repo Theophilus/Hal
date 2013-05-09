@@ -122,6 +122,7 @@
         <activity
             android:name=".audio.audio_home"
             android:label="audio_layout"
+            android:screenOrientation="portrait"
             android:parentActivityName="SE_spring2013_g8.hal.Main.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
