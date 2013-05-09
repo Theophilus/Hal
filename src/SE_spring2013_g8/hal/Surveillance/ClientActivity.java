@@ -29,10 +29,9 @@ import android.os.Environment;
 import android.os.Handler;
 import android.util.Log;
 import android.view.Menu;
-import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 /**
@@ -47,6 +46,7 @@ import android.widget.Toast;
 public class ClientActivity extends Activity {
 
     private Handler handler = new Handler();
+ 
 	
 	/**
 	 * EditText containing the IP address of the server (the receiving end of this video)
@@ -147,7 +147,10 @@ public class ClientActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        setContentView(R.layout.surveillance_client_activity);        
+        setContentView(R.layout.surveillance_client_activity);
+        
+        ImageView surveillanceNotifyView = (ImageView) findViewById(R.id.surveillance_notify);
+        surveillanceNotifyView.setImageResource(R.drawable.surveillance_notify);
         
         // Create our Preview view and set it as the content of our activity.
         mCamera = openFrontFacingCameraGingerbread();	
@@ -170,7 +173,10 @@ public class ClientActivity extends Activity {
         preview.addView(mPreview);
         
         // add listeners to the buttons of this activity 
-        addButtonListeners();
+        //addButtonListeners();
+        
+        // start the client thread to send video
+        cThread.start();
     }
     
     /**
@@ -396,6 +402,63 @@ public class ClientActivity extends Activity {
         }
     }
     
+
+    
+    private byte getTokenFromLocalIPAddress() {
+        try {
+            for (Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements();) {
+                NetworkInterface intf = en.nextElement();
+                for (Enumeration<InetAddress> enumIpAddr = intf.getInetAddresses(); enumIpAddr.hasMoreElements();) {
+                    InetAddress inetAddress = enumIpAddr.nextElement();
+
+                    //IPv4:
+                    if (!inetAddress.isLoopbackAddress()    && InetAddressUtils.isIPv4Address(inetAddress.getHostAddress())   ) {
+                    	String IPv4Address = inetAddress.getHostAddress().toString();
+                    	
+                    	String[] tokens = IPv4Address.split("\\.");
+                    	String lastElementString = tokens[tokens.length-1];
+                    	byte lastElementByte = Byte.valueOf(lastElementString);
+                    	Log.e("Client token: ", Byte.toString(lastElementByte));
+                    	return lastElementByte;
+                    }
+                    
+                    //IPv6:
+                    //if (!inetAddress.isLoopbackAddress()    && InetAddressUtils.isIPv4Address(ipv4 = inetAddress.getHostAddress())   ) { return inetAddress.getHostAddress().toString(); }
+                }
+            }
+        } catch (SocketException ex) {
+            Log.e("ServerActivity", ex.toString());
+        }
+        return 0;
+    }
+    
+    private void logSupportedPreviewSizes (Camera.Parameters mCameraParameters) {
+    	List<Camera.Size> mCameraSizes = mCameraParameters.getSupportedPreviewSizes();
+    	for (Camera.Size mCameraSize : mCameraSizes) {
+    		Log.e("Available Camera Size: ", mCameraSize.width + "x" + mCameraSize.height);
+    	}
+    }
+    
+    private void toastUsingHandler(String text, Handler handler, Context context) {
+    	final String textFinal = text; 
+    	final Context contextFinal = context;
+    	handler.post(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(contextFinal, textFinal, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    
+    private String byteArrayToString(byte[] array) {
+    	String mString = "";
+    	for (int i=0; i<array.length; i++) {
+    		mString = mString + array[i] + " ";
+    	}
+    	return mString;
+    }
+    
+    /*
     private void addButtonListeners() {
         // Add a listener to the Capture button
 		final Button captureButton = (Button) findViewById(R.id.button_capture);
@@ -449,60 +512,5 @@ public class ClientActivity extends Activity {
 		    }
 		);
     }
-    
-    /*
-    private void toastUsingHandler(String text, Handler handler, Context context) {
-    	final String textFinal = text; 
-    	final Context contextFinal = context;
-    	handler.post(new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(contextFinal, textFinal, Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-    
-    private String byteArrayToString(byte[] array) {
-    	String mString = "";
-    	for (int i=0; i<array.length; i++) {
-    		mString = mString + array[i] + " ";
-    	}
-    	return mString;
-    }
     */
-    
-    private byte getTokenFromLocalIPAddress() {
-        try {
-            for (Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements();) {
-                NetworkInterface intf = en.nextElement();
-                for (Enumeration<InetAddress> enumIpAddr = intf.getInetAddresses(); enumIpAddr.hasMoreElements();) {
-                    InetAddress inetAddress = enumIpAddr.nextElement();
-
-                    //IPv4:
-                    if (!inetAddress.isLoopbackAddress()    && InetAddressUtils.isIPv4Address(inetAddress.getHostAddress())   ) {
-                    	String IPv4Address = inetAddress.getHostAddress().toString();
-                    	
-                    	String[] tokens = IPv4Address.split("\\.");
-                    	String lastElementString = tokens[tokens.length-1];
-                    	byte lastElementByte = Byte.valueOf(lastElementString);
-                    	Log.e("Client token: ", Byte.toString(lastElementByte));
-                    	return lastElementByte;
-                    }
-                    
-                    //IPv6:
-                    //if (!inetAddress.isLoopbackAddress()    && InetAddressUtils.isIPv4Address(ipv4 = inetAddress.getHostAddress())   ) { return inetAddress.getHostAddress().toString(); }
-                }
-            }
-        } catch (SocketException ex) {
-            Log.e("ServerActivity", ex.toString());
-        }
-        return 0;
-    }
-    
-    private void logSupportedPreviewSizes (Camera.Parameters mCameraParameters) {
-    	List<Camera.Size> mCameraSizes = mCameraParameters.getSupportedPreviewSizes();
-    	for (Camera.Size mCameraSize : mCameraSizes) {
-    		Log.e("Available Camera Size: ", mCameraSize.width + "x" + mCameraSize.height);
-    	}
-    }
 }
