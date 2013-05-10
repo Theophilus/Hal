@@ -11,7 +11,6 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import com.androidhive.androidsqlite.*;
 import SE_spring2013_g8.hal.R;
 import android.app.Activity;
 import android.content.Context;
@@ -82,7 +81,6 @@ public class LightControl extends Activity {
 	/**
 	 * spinner handler for lights
 	 */
-	ArrayAdapter<String> ladapter;
 	
 	File SavedIP;
 	
@@ -195,7 +193,7 @@ public class LightControl extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_light_control);
 		Spinner spinner = (Spinner) findViewById(R.id.Lights_list);
-		ladapter = new ArrayAdapter<String>(this, R.array.Lights_list, android.R.layout.simple_spinner_item);
+		ArrayAdapter<CharSequence> ladapter = ArrayAdapter.createFromResource(this, R.array.Lights_list, android.R.layout.simple_spinner_item);
 		ladapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(ladapter);
 		spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
