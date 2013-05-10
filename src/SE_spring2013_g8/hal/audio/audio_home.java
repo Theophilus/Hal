@@ -25,7 +25,7 @@ public class audio_home extends Activity implements OnClickListener {
 		pause.setOnClickListener(this);
 		
 		mpAudio = MediaPlayer.create(this, R.raw.levels);
-		mpAudio.setLooping(true);
+		mpAudio.setLooping(false);
 		
 	}
 	public void onClick(){

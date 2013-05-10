@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
@@ -61,4 +62,75 @@
     	<item>Blind2</item>
     </string-array>
 
+=======
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Hal Home</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world"></string>
+    <string name="title_activity_light_control">LightControl</string>
+    <string name="addrem">Add/Remove An Item</string>
+    <string name="Blind_open">Open</string>
+    <string name="Blind_close">Close</string>
+    <string name="Light_control_title">Light Control</string>
+    <string name="AddLight">Add Light</string>
+    <string name="RemoveLight">Remove Light</string>
+    <string name="AddBlind">Add Blind</string>
+    <string name="RemoveBlind">Remove Blind</string>
+    <string name="ItemName">Enter the item name</string>
+    <string name="ItemID">Enter the item ID(1&#8211;8)</string>
+    <string name="Light_on">On</string>
+    <string name="Light_off">Off</string>
+    <string name="LightsToggle">Turn Lights Off</string>
+    <string name="BlindsToggle">Close All Blinds</string>
+    <string name="title_activity_comms_thread">CommsThread</string>
+    <string name="intercom_home_broadcast">Broadcast</string>
+    <string name="intercom_home_p2p">P2P Call</string>
+    <string name="intercom_home_Conf">Conference Call</string>
+    <string name="intercom_broadcast_chronometer">Chronometer</string>
+    <string name="intercom_broadcast_start">Start</string>
+    <string name="intercom_broadcast_stop">Stop</string>
+    <string name="intercom_broadcast_announcement">Annoucement from [Device ID]</string>
+    <string name="intercom_callerName">Call from [Device ID]</string>
+    <string name="intercom_p2p_call">Call</string>
+    <string name="intercom_p2p_cancel">Cancel</string>
+    <string name="intercom_conference_call">Call</string>
+    <string name="intercom_conference_cancel">Cancel</string>
+    <string name="exit_intercom">Exit</string>
+    <string name="title_activity_emergency_lighting">Emergency Lighting</string>
+    <string name="Add_light">Display Connected IP</string>
+    <string name="editIp">Enter your IP address</string>
+    <string name="set_ip">Set IP</string>
+    <string name="no_ip_error">No IP Address Set!</string>
+    <string name="confirm_ip">IP Address Set!</string>
+    <string name="ip_file_name">ipfile</string>
+    <string name="settings">Settings</string>
+    <string name="homeLoc">Home Coordinates:</string>
+    <string name="latTV">Latitude:</string>
+    <string name="lonTV">Longitude:</string>
+    <string name="setHome">Set Home</string>
+    <string name="curLoc">Get Current Location</string>
+    <string name="settTitle">Settings</string>
+
+    <!-- example apps -->
+    <string-array name="apps">
+        <item>blinds</item>
+        <item>lights</item>
+        <item>door</item>
+        <item>coffe maker</item>
+        <item>heater</item>
+    </string-array>
+    <string-array name="Lights_list">
+        <item>light1</item>
+        <item>light2</item>
+    </string-array>
+    <string-array name="Blinds_list">
+        <item>blind1</item>
+        <item>blind2</item>
+    </string-array>
+
+    <string name="title_activity_light_manage">Add/Remove Lights or Blinds</string>
+
+>>>>>>> 3c510c0fac4831d083cf83c462477d8718f8bdcd
 </resources>
