@@ -50,7 +50,7 @@ public class BroadcastView extends Activity {
     AudioRecord recorder;
 
     //Audio Configuration. 
-    private int sampleRate = 8000;      //How much will be ideal?
+    private int sampleRate = 44100;      //How much will be ideal?
     private int channelConfig = AudioFormat.CHANNEL_IN_MONO;    
     private int audioFormat = AudioFormat.ENCODING_PCM_16BIT;       
 
@@ -94,7 +94,6 @@ public class BroadcastView extends Activity {
 	public void gotoAnnouncement(View view) {
 		MainActivity.stopVoiceReceiver();
 		startRecording();
-		//timer.
 		timer.start();
 		startbutton.setClickable(false);
 		stopbutton.setClickable(true);
@@ -118,8 +117,8 @@ public class BroadcastView extends Activity {
 	                Log.d("VS","Buffer created of size " + minBufSize);
 	                DatagramPacket packet;
 
-	                final InetAddress destination = InetAddress.getByName("192.168.0.105"); //home IP
-	                //final InetAddress destination = InetAddress.getByName("192.168.1.3"); // rutgers IP
+	               // final InetAddress destination = InetAddress.getByName("192.168.0.105"); home IP
+	                final InetAddress destination = InetAddress.getByName("192.168.1.3"); // rutgers IP
 	                Log.d("VS", "Address retrieved");
 
 
