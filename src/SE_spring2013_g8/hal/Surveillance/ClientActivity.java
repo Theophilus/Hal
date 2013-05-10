@@ -197,7 +197,7 @@ public class ClientActivity extends Activity {
                 
                 while (connected) {
                     try {
-                    	Thread.sleep(100);
+                    	Thread.sleep(50);
                     	Log.d("ClientActivity", "C: Sending command.");
 
                     	VideoFrame mVideoFrame = new VideoFrame();
