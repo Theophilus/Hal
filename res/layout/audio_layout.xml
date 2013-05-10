@@ -34,18 +34,6 @@
         android:layout_gravity="center"
         android:text="ToggleButton" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Play" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pause" />
-
     <MediaController
         android:id="@+id/mediaController1"
         android:layout_width="match_parent"

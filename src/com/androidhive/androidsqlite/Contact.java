@@ -49,7 +49,7 @@ public class Contact {
 	}
 	
 	// setting phone number
-	public void setPhoneNumber(String phone_number){
-		this.IP_Address = phone_number;
+	public void setIPAddress(String IP_Address){
+		this.IP_Address = IP_Address;
 	}
 }

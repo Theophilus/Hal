@@ -11,6 +11,7 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import com.androidhive.androidsqlite.*;
 import SE_spring2013_g8.hal.R;
 import android.app.Activity;
 import android.content.Context;

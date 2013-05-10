@@ -97,7 +97,7 @@ public class IPAddressList extends SQLiteOpenHelper {
 				Contact contact = new Contact();
 				contact.setID(Integer.parseInt(cursor.getString(0)));
 				contact.setName(cursor.getString(1));
-				contact.setPhoneNumber(cursor.getString(2));
+				contact.setIPAddress(cursor.getString(2));
 				// Adding contact to list
 				contactList.add(contact);
 			} while (cursor.moveToNext());
