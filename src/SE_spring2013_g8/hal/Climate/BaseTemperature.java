@@ -13,8 +13,13 @@ import android.widget.TextView;
 import SE_spring2013_g8.hal.R;
 
 /**
- * Created with IntelliJ IDEA. User: mendable Date: 05.06.12 Time: 17:22 To
- * change this template use File | Settings | File Templates.
+ * BaseTemperature class
+ * 
+ *  BaseTemperature is an activity class that sets temperature for vacation mode and day and night mode.
+ *  
+ * 
+ * @author Mohak Tamhane
+ *
  */
 public class BaseTemperature extends Activity implements OnClickListener {
 

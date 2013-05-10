@@ -25,6 +25,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class ScheduleActivity extends Activity implements OnClickListener {
+	/**
+	 * ScheduleActivity class
+	 * 
+	 *  ScheduleActivity is an activity class that creates schedule for climate control.
+	 *  
+	 * 
+	 * @author Mohak Tamhane
+	 *
+	 */
 
   private int day = 0;
   private ScheduleAdapter adapter = null;

@@ -28,6 +28,15 @@ import android.widget.ToggleButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 
 public class ThermostatActivity extends Activity implements OnClickListener {
+	
+	/**
+	 * ThermostatActivity class
+	 * 
+	 *  Climate Control main 
+	 * 
+	 * @author Mohak Tamhane
+	 *
+	 */
 
 	private TextView textTemp;
 	private SeekBar barTemp;

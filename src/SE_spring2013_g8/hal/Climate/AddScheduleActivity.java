@@ -15,6 +15,16 @@ import android.widget.TimePicker;
 
 public class AddScheduleActivity extends Activity implements OnClickListener {
 
+	/**
+	 * AddScheduleActivity class
+	 * 
+	 *  AddSchudleActivity is an activity class that adds the schedule into the system 
+	 *  
+	 * 
+	 * @author Mohak Tamhane
+	 *
+	 */
+	
 	private TimePicker timePicker;
 	private RadioButton radioDay;
 	private int day;
