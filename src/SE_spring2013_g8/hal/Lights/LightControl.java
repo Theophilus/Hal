@@ -14,10 +14,7 @@ import java.net.UnknownHostException;
 import SE_spring2013_g8.hal.R;
 import android.app.Activity;
 import android.content.Context;
-<<<<<<< HEAD
-=======
-import android.content.Intent;
->>>>>>> 3c510c0fac4831d083cf83c462477d8718f8bdcd
+
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -85,7 +82,7 @@ public class LightControl extends Activity {
 	 * spinner handler for lights
 	 */
 	
-	File SavedIP;
+	
 	
 	File SavedIP;
 	
@@ -175,8 +172,8 @@ public class LightControl extends Activity {
 	 * @param view
 	 */
 	
-	public void set_ip(View view) {
-		EditText editText = (EditText) findViewById(R.id.edit_ip);
+	/*public void set_ip(View view) {
+		EditText editText = (EditText) findViewById(R.id);
 		ipAddress = editText.getText().toString();
 		new CreateCommThreadTask().execute();
 		Toast prName = Toast.makeText(this,R.string.confirm_ip,Toast.LENGTH_LONG);
@@ -192,7 +189,7 @@ public class LightControl extends Activity {
 		}
 	}
 	
-	/** Called when the activity is first created. */
+	/** Called when the activity is first created. 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -341,17 +338,7 @@ public class LightControl extends Activity {
 	}
 	
 	/**
-<<<<<<< HEAD
-=======
-	 * method to bring user to edit screen
-	 */
-	public void AddRemove(View view){
-		Intent intent = new Intent(this, LightManage.class);
-    	startActivity(intent);
-	}
-	
-	/**
->>>>>>> 3c510c0fac4831d083cf83c462477d8718f8bdcd
+
 	 * method used to send a message to the server to be displayed
 	 * @param message
 	 */
