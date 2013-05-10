@@ -13,7 +13,7 @@ import SE_spring2013_g8.hal.Climate.ThermostatActivity;
 import SE_spring2013_g8.hal.Intercom.HomeView;
 import SE_spring2013_g8.hal.Lights.LightControl;
 import SE_spring2013_g8.hal.Surveillance.SurveillanceMainActivity;
-import SE_spring2013_g8.hal.Audio.audio_home;
+import SE_spring2013_g8.hal.audio.audio_home;
 import SE_spring2013_g8.hal.emerlight.EmergencyLighting;
 import SE_spring2013_g8.hal.Weather.Weather;
 import android.app.Activity;
