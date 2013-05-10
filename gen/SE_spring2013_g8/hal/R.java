@@ -91,8 +91,8 @@ public final class R {
         public static final int broadcastTimer=0x7f0b0036;
         public static final int btnJSON=0x7f0b006a;
         public static final int button1=0x7f0b0020;
-        public static final int button2=0x7f0b0028;
-        public static final int button3=0x7f0b0029;
+        public static final int button2=0x7f0b0026;
+        public static final int button3=0x7f0b0027;
         public static final int buttonAdd=0x7f0b005e;
         public static final int buttonAddShedule=0x7f0b0025;
         public static final int buttonDec=0x7f0b0059;
@@ -170,11 +170,11 @@ public final class R {
         public static final int setHomeButton=0x7f0b001d;
         public static final int setIp=0x7f0b0009;
         public static final int surveillance_notify=0x7f0b0066;
-        public static final int textView2=0x7f0b0026;
+        public static final int textView2=0x7f0b0028;
         public static final int textViewGrad=0x7f0b0058;
         public static final int textViewNoSchedul=0x7f0b0060;
         public static final int timePicker=0x7f0b0021;
-        public static final int toggleButton1=0x7f0b0027;
+        public static final int toggleButton1=0x7f0b0029;
         public static final int toggleVocation=0x7f0b005d;
     }
     public static final class integer {
