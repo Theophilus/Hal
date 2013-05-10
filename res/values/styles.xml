@@ -1,5 +1,7 @@
 <resources>
-
+	<color name="highColor">#000000</color>
+    <color name="lowColor">#000000</color>
+    
     <!--
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.

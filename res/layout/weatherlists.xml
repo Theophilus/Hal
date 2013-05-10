@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+       <RelativeLayout
+        android:id="@+id/inputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true" >
+
+        <EditText
+            android:id="@+id/cityText"
+            android:layout_width="200sp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/goButton"
+            android:singleLine="true"
+            android:inputType="text"
+            android:text="@string/defaultCity" >
+
+            <requestFocus />
+        </EditText>
+
+        <Button
+            android:id="@+id/goButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:text="@string/go" />
+        
+        <CheckBox
+            android:id="@+id/inCCheck"
+            android:layout_width="75sp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/cityText"
+            android:text="@string/inC" />
+        
+        <TextView
+            android:id="@+id/cityWeatherLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/inCCheck"
+            android:text="@string/weatherLabelString"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <CheckBox
+            android:id="@+id/locationCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/cityText"
+            android:text="@string/currentLocationText" />
+
+    </RelativeLayout>
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="75dp" 
+        android:id="@+id/currentForecast" 
+        android:tag="currentConditionsList"
+        android:layout_below="@+id/inputLayout"
+        />
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:id="@+id/forecastCondtionsList"
+        android:layout_below="@+id/currentForecast"
+        />
+</RelativeLayout>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+     <TextView
+            android:id="@+id/forecastLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Day of Week"
+            android:textStyle="bold"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/forecastImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/forecastLabel"
+            android:src="@drawable/ic_launcher" />
+
+        <TextView
+            android:id="@+id/forecastHighText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:text="TodayHighText"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/highColor" />
+
+        <TextView
+            android:id="@+id/forecastLowText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/forecastHighText"
+            android:paddingTop="5sp"
+            android:text="TextView"
+            android:textColor="@color/lowColor" />
+
+        <TextView
+            android:id="@+id/forecastConditionText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/forecastLowText"
+            android:layout_alignTop="@+id/forecastImage"
+            android:layout_toRightOf="@+id/forecastImage"
+            android:layout_marginLeft="15sp"
+            android:text="Current Condition"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="12sp" />
+
+</RelativeLayout>
