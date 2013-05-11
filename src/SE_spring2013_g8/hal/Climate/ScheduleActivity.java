@@ -95,7 +95,10 @@ public class ScheduleActivity extends Activity implements OnClickListener {
     buttonSend.setOnClickListener(this);
 
   }
-  
+ 
+  /**
+   * Adds schedule
+   */
   @Override
   public void onClick(View v) {
     SharedPreferences prefs;

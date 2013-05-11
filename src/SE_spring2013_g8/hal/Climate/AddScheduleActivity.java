@@ -42,6 +42,9 @@ public class AddScheduleActivity extends Activity implements OnClickListener {
 
 		radioDay.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
+			/**
+			 * Day night schedule set
+			 */
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView,
 					boolean isChecked) {
@@ -71,6 +74,10 @@ public class AddScheduleActivity extends Activity implements OnClickListener {
 
 	}
 
+	
+	/**
+	 * Time Picker to set time for the schedule.
+	 */
 	@Override
 	public void onClick(View v) {
 

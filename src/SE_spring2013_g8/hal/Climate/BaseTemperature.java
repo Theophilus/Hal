@@ -61,6 +61,9 @@ public class BaseTemperature extends Activity implements OnClickListener {
 		updateNight();
 	}
 
+	/**
+	 * Update Day Night temperature
+	 */
 	private void updateDay() {
 		dayView.setText(format.format(dayTemp) + " ¡C");
 	}
@@ -69,6 +72,9 @@ public class BaseTemperature extends Activity implements OnClickListener {
 		nightView.setText(format.format(nightTemp) + " ¡C");
 	}
 
+	/**
+	 * Sets Temperature for day and night
+	 */
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {

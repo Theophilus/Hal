@@ -1,5 +1,7 @@
 /**
+ * 
  * WUengine.java
+ * @author Mohak Tamhane
  * Implementing JSON parsing for weather underground API.
  */
 
@@ -71,10 +73,7 @@ public  Object getWeather(String location,Context context)
 		}
 	for(int i = 0; i < simpleForecastArray.length();i++)
 		{
-			/**
-			 * I don't currently care about overnight forecasts, since nights are odd forecast dates, I ignore them.
-			 * 
-			 */
+			
 				ForecastWeather newForecast = new ForecastWeather();
 				JSONObject currentSimpleForecastObject = simpleForecastArray.getJSONObject(i);
 				JSONObject currentForecastDateObject = currentSimpleForecastObject.getJSONObject("date");

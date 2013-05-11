@@ -6,6 +6,14 @@ import java.util.List;
 import android.content.SharedPreferences;
 
 public class Util {
+	
+	/**
+	 * Util class
+	 * 
+	 * 
+	 * @author Mohak Tamhane
+	 *
+	 */
 
 	public static void addShedule(SharedPreferences prefs, int day,
 			boolean day_night, int hour, int minute) {
