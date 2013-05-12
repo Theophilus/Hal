@@ -3,34 +3,30 @@ package SE_spring2013_g8.hal.Main;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import java.net.InetAddress;
 import java.net.SocketException;
-import java.net.UnknownHostException;
 
-import lash.halapp.ViewDevActivity;
+import lash.happ.ViewDevsActivity;
+
 import SE_spring2013_g8.hal.R;
 import SE_spring2013_g8.hal.Climate.ThermostatActivity;
 import SE_spring2013_g8.hal.Intercom.HomeView;
 import SE_spring2013_g8.hal.Lights.LightControl;
 import SE_spring2013_g8.hal.Surveillance.SurveillanceMainActivity;
+import SE_spring2013_g8.hal.Weather.DWeatherActivity;
 import SE_spring2013_g8.hal.audio.audio_home;
 import SE_spring2013_g8.hal.emerlight.EmergencyLighting;
-import SE_spring2013_g8.hal.Weather.DWeatherActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.media.AudioFormat;
 import android.media.AudioManager;
 import android.media.AudioRecord;
 import android.media.AudioTrack;
-import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
-import android.widget.Toast;
 
 /**
  * MainActivity class
@@ -48,6 +44,7 @@ public class MainActivity extends Activity {
 
 	//Audio Configuration. 
 	private static int sampleRate = 44100;      //How much will be ideal?
+	@SuppressWarnings("deprecation")
 	private static int channelConfig = AudioFormat.CHANNEL_CONFIGURATION_MONO;    
 	private static int audioFormat = AudioFormat.ENCODING_PCM_16BIT;       
 
@@ -99,7 +96,7 @@ public class MainActivity extends Activity {
 	            	startActivity(intent);
 	            }
 	            if (position == 2) {
-	            	Intent intent = new Intent(MainActivity.this, ViewDevActivity.class);
+	            	Intent intent = new Intent(MainActivity.this, ViewDevsActivity.class);
 	            	startActivity(intent);
 	            }
 	            if (position == 1) {

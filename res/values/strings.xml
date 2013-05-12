@@ -45,32 +45,43 @@
     <string name="weatherLabelString">Weather for city:</string>
     <string name="WUndergroundDesc">WUnderground logo</string>
     <string name="weatherLabelText">Weather data provided by:</string>
-
     <string name="settings">Settings</string>
-    <string name="homeLoc">Home Coordinates:</string>
-    <string name="latTV">Latitude:</string>
-    <string name="lonTV">Longitude:</string>
-    <string name="setHome">Set Home</string>
-    <string name="curLoc">Get Current Location</string>
     <string name="settTitle">Settings</string>
-    
-    <!--  example apps -->
-    <string-array name="apps">
-        <item >blinds</item>
-        <item >lights</item>
-        <item >door</item>
-        <item >coffe maker</item>
-        <item >heater</item>
-    </string-array>
-    
+
+    <!-- example apps -->
     <string-array name="Lights_list">
         <item>Light1</item>
         <item>Light2</item>
     </string-array>
-    
     <string-array name="Blinds_list">
-    	<item>Blind1</item>
-    	<item>Blind2</item>
+        <item>Blind1</item>
+        <item>Blind2</item>
     </string-array>
+
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="title_activity_view_devs">ViewDevsActivity</string>
+    <string name="title_devs">Home Devices</string>
+    <string name="title_setts">HApp Settings</string>
+    <string-array name="list_devs">
+        <item >Lights</item>
+        <item >Windows</item>
+        <item >Garage</item>
+        <item >Blinds</item>
+        <item >Heater</item>
+    </string-array>
+    
+	<string name="homeLoc">Set Home Coordinates:</string>
+	<string name="latTV">Latitude:</string>
+	<string name="lonTV">Longitude:</string>
+	<string name="setHome">Set Home Location</string>
+	<string name="curLoc">Get Coordinates</string>
+	<string name="badPro_message">Could not find location provider! please enable something!</string>
+	<string name="badPro_title">I can\'t see!</string>
+	<string name="badAcc_message">Accuracy is not fine. Try waiting or enabling gps.</string>
+	<string name="badAcc_title">Not very Accurate</string>
+	<string name="refButt">Refresh!</string>
+    <string name="settButt">Settings</string>
+    <string name="currSet">Current set Home:</string>
+    
 
 </resources>

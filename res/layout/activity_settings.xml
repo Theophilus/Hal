@@ -54,8 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:ems="10"
-                android:inputType="numberDecimal" >
-            </EditText>
+                android:inputType="numberDecimal" />
             
         </LinearLayout>
 
@@ -65,11 +64,89 @@
         android:id="@+id/setHomeButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/setHome" />
+        android:text="@string/setHome"
+        android:onClick="setHome" />
     <Button
         android:id="@+id/getLocButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/curLoc" />
+        android:text="@string/curLoc"
+        android:onClick="getCurrentLocation" />
+    <TextView
+        android:id="@+id/currSetTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/currSet"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:padding="3dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            
+            <TextView
+                android:id="@+id/vlatTVLabel"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:text="@string/latTV"
+                android:gravity="center_vertical" />
+            <TextView
+                android:id="@+id/vlonTVLabel"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:text="@string/lonTV"
+                android:gravity="center_vertical" />
+            
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1" >
+
+            <TextView
+                android:id="@+id/vlatTV"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:gravity="center_vertical"
+                android:textIsSelectable="true" />
+            <TextView
+                android:id="@+id/vlonTV"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:gravity="center_vertical"
+                android:textIsSelectable="true" />
+            
+        </LinearLayout>
+        
+
+    </LinearLayout>
+    
+    <TextView
+        android:id="@+id/vDistTV"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:gravity="center_horizontal"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:background="@drawable/edge_shape" />
+    <TextView
+        android:id="@+id/vHomeTV"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:gravity="center"
+        android:background="@drawable/edge_shape" />
+<!--     <Button -->
+<!--         android:id="@+id/toggleHome" -->
+<!--         android:layout_width="match_parent" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:text="Force Toggle Home" -->
+<!--         android:onClick="tglHome" /> -->
 
 </LinearLayout>
