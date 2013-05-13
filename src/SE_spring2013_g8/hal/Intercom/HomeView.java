@@ -19,6 +19,7 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 
 /**
@@ -182,5 +183,20 @@ public class HomeView extends Activity {
         }
         return null;
     }
+	}
+	
+	@Override
+	/**
+	 * Method to go back to photo list if back button is pressed
+	 */
+	public boolean onKeyDown(int keycode, KeyEvent event){
+		if (keycode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+			Intent intent = new Intent(this, MainActivity.class);
+			startActivity(intent);
+	        return true;
+	    }
+		
+		return false;
+		
 	}
 }

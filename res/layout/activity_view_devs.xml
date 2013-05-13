@@ -1,0 +1,26 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ViewDevsActivity" >
+
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+    <Button
+        android:id="@+id/refButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/refButt"
+        android:onClick="refreshList"/>
+    <Button
+        android:id="@+id/settsButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/settButt"
+        android:onClick="settsClicked"/>
+</LinearLayout>

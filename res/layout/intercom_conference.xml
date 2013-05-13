@@ -5,6 +5,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Not functional" />
+
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,7 +21,7 @@
 
         <Button
             android:id="@+id/intercom_conf_cancel"
-            android:layout_width="wrap_content"
+            android:layout_width="109dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right|top"
             android:onClick="gotoHome"
@@ -22,12 +29,14 @@
 
         <Button
             android:id="@+id/intercom_conf_call"
-            android:layout_width="wrap_content"
+            android:layout_width="115dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
+            android:layout_column="1"
+            android:layout_gravity="right|top"
             android:layout_row="0"
             android:onClick="gotoConnCall"
             android:text="@string/intercom_conference_call" />
+
     </GridLayout>
 
 </LinearLayout>

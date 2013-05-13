@@ -5,10 +5,11 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketException;
 
-import lash.happ.ViewDevsActivity;
+
 
 import SE_spring2013_g8.hal.R;
 import SE_spring2013_g8.hal.Climate.ThermostatActivity;
+import SE_spring2013_g8.hal.Climate.ViewDevsActivity;
 import SE_spring2013_g8.hal.Intercom.HomeView;
 import SE_spring2013_g8.hal.Lights.LightControl;
 import SE_spring2013_g8.hal.Surveillance.SurveillanceMainActivity;
@@ -43,7 +44,7 @@ public class MainActivity extends Activity {
 	private static AudioTrack speaker;
 
 	//Audio Configuration. 
-	private static int sampleRate = 44100;      //How much will be ideal?
+	private static int sampleRate = 8000;      //How much will be ideal?
 	@SuppressWarnings("deprecation")
 	private static int channelConfig = AudioFormat.CHANNEL_CONFIGURATION_MONO;    
 	private static int audioFormat = AudioFormat.ENCODING_PCM_16BIT;       

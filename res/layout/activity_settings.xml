@@ -134,14 +134,16 @@
         android:layout_height="35dp"
         android:gravity="center_horizontal"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:background="@drawable/edge_shape" />
+        
+        />
     <TextView
         android:id="@+id/vHomeTV"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:gravity="center"
-        android:background="@drawable/edge_shape" />
+        
+        />
 <!--     <Button -->
 <!--         android:id="@+id/toggleHome" -->
 <!--         android:layout_width="match_parent" -->

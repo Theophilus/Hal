@@ -115,7 +115,7 @@
         </activity>
         <activity
             android:name=".audio.audio_home"
-            android:label="audio_layout"
+            android:label="Audio System"
             android:parentActivityName="SE_spring2013_g8.hal.Main.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -167,11 +167,11 @@
       
        <activity
             android:name=".Climate.ThermostatActivity"
-            android:label="@string/app_name"
+            android:label="Thermostat"
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="SE_spring2013_g8.hal.Main.MainActivity" />
+                android:value="SE_spring2013_g8.hal.Climate.ViewDevsActivity" />
         </activity>
         
        <activity
@@ -180,7 +180,7 @@
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="SE_spring2013_g8.hal.Climate.ThermostatActivity" />
+                android:value="SE_spring2013_g8.hal.Climate.ViewDevsActivity" />
         </activity>
         
         <activity
@@ -189,7 +189,7 @@
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="SE_spring2013_g8.hal.Climate.ThermostatActivity" />
+                android:value="SE_spring2013_g8.hal.Climate.ViewDevsActivity" />
         </activity>
         
         <activity
@@ -198,17 +198,34 @@
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="SE_spring2013_g8.hal.Climate.ThermostatActivity" />
+                android:value="SE_spring2013_g8.hal.Climate.ViewDevsActivity" />
         </activity>
-       
-       <activity android:name=".Weather.DWeatherActivity">
+        
+        <activity
+            android:name=".Climate.ViewDevsActivity"
+            android:label="@string/title_devs" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="SE_spring2013_g8.hal.Main.MainActivity" />
+        </activity>
+        
+        <activity
+            android:name=".Climate.SettingsActivity"
+            android:label="@string/title_setts">
+            <meta-data 
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="SE_spring2013_g8.hal.Climate.ViewDevsActivity" />
+        </activity>
+        
+       <activity android:name=".Weather.DWeatherActivity"
+           		android:label="Weather Channel">
                         <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="SE_spring2013_g8.hal.Main.MainActivity" />
         </activity>
         <activity
             android:name=".Weather.WeatherActivity"
-            android:label="@string/app_name" >
+            android:label="Weather Chaneel" >
                         <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="SE_spring2013_g8.hal.Weather.DWeatherActivity" />
@@ -220,20 +237,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="SE_spring2013_g8.hal.Weather.DWeatherActivity" />
         </activity>
-        <activity
-            android:name=".ViewDevsActivity"
-            android:label="@string/title_devs" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="SE_spring2013_g8.hal.Main.MainActivity" />
-        </activity>
-        <activity
-            android:name=".SettingsActivity"
-            android:label="@string/title_setts">
-            <meta-data 
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="lash.happ.ViewDevsActivity" />
-        </activity>
+       
         
     </application>
 

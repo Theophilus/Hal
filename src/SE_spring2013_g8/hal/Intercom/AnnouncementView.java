@@ -1,8 +1,11 @@
 package SE_spring2013_g8.hal.Intercom;
 
 import SE_spring2013_g8.hal.R;
+import SE_spring2013_g8.hal.Main.MainActivity;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 
 /**
  * AnnouncementView class
@@ -24,4 +27,18 @@ public class AnnouncementView extends Activity {
 		
 		}
 
+	@Override
+	/**
+	 * Method to go back to photo list if back button is pressed
+	 */
+	public boolean onKeyDown(int keycode, KeyEvent event){
+		if (keycode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+			Intent intent = new Intent(this, HomeView.class);
+			startActivity(intent);
+	        return true;
+	    }
+		
+		return false;
+		
+	}
 }

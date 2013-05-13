@@ -8,11 +8,29 @@
     android:orientation="vertical"
     android:padding="@dimen/activity_horizontal_margin" >
 
-   
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/broadcast_IP_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.11"
+            android:text="Destination IP: " />
+
+        <TextView
+            android:id="@+id/broadcast_IPAddr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.11"
+            android:text="" />
+
+    </LinearLayout>
 
     <Chronometer
         android:id="@+id/broadcastTimer"
-        android:layout_width="wrap_content"
+        android:layout_width="57dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginLeft="24dp"
@@ -23,7 +41,8 @@
         android:id="@+id/LinearLayout2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.41"
+        android:layout_weight="2.03"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal" >
 
         <Button
@@ -31,6 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
+            android:layout_weight="0.19"
             android:onClick="gotoAnnouncement"
             android:text="@string/intercom_broadcast_start" />
 
@@ -39,8 +59,36 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right|top"
+            android:layout_weight="0.23"
             android:onClick="stopBroadcast"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
             android:text="@string/intercom_broadcast_stop" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="@dimen/activity_horizontal_margin" >
+
+        <EditText
+            android:id="@+id/broadcast_IP_editText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10" >
+
+            <requestFocus />
+        </EditText>
+
+        <Button
+            android:id="@+id/broadcast_IP_SetButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="setDesIP"
+            android:text="Set IP" />
+
     </LinearLayout>
 
 </LinearLayout>
