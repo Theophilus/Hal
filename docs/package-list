@@ -1,9 +1,10 @@
+Hal.Database
 SE_spring2013_g8.hal
-SE_spring2013_g8.hal.Audio
 SE_spring2013_g8.hal.Climate
 SE_spring2013_g8.hal.Intercom
 SE_spring2013_g8.hal.Lights
 SE_spring2013_g8.hal.Main
 SE_spring2013_g8.hal.Surveillance
+SE_spring2013_g8.hal.Weather
+SE_spring2013_g8.hal.audio
 SE_spring2013_g8.hal.emerlight
-lash.halapp

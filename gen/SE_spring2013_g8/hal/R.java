@@ -169,8 +169,8 @@ public final class R {
         public static final int intercom_incall_dail=0x7f0c006e;
         public static final int intercom_incall_reject=0x7f0c0070;
         public static final int intercom_p2p=0x7f0c006c;
-        public static final int intercom_p2p_call=0x7f0c0072;
-        public static final int intercom_p2p_cancel=0x7f0c0071;
+        public static final int intercom_p2p_call=0x7f0c0071;
+        public static final int intercom_p2p_cancel=0x7f0c0072;
         public static final int latEditText=0x7f0c0019;
         public static final int latTextView=0x7f0c0017;
         public static final int launch_client=0x7f0c0098;
